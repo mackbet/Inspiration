@@ -38,12 +38,6 @@ public class ForestSpawner : MonoBehaviour
         instance = this;
 
         Initialize();
-
-        SpawnForest();
-
-        //SpawnRocks();
-        
-        BakeNavMesh();
     }
 
     private void SpawnRocks()
@@ -78,7 +72,7 @@ public class ForestSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnForest()
+    public void SpawnForest()
     {
         for (int i = 0; i < width * scale + 1; i++)
         {
@@ -105,6 +99,8 @@ public class ForestSpawner : MonoBehaviour
                 }
             }
         }
+
+        BakeNavMesh();
     }
     private void MarkObjectRadius(EnvironmentObject obj, int radius)
     {
