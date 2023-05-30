@@ -10,7 +10,7 @@ public static class RandomHelper
     }
     public static int GetRandomInt(int minValue, int maxValue)
     {
-        return random.Next(minValue, maxValue + 1);
+        return random.Next(minValue, maxValue);
     }
 
     public static float GetRandomFloat(float minValue, float maxValue)

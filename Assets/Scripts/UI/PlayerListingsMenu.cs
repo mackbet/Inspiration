@@ -20,7 +20,6 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
             return;
 
         var collection = PhotonNetwork.CurrentRoom.Players;
-        Debug.Log("GetCurrentRoomPlayers");
         foreach (KeyValuePair<int,Player> playerInfo in collection)
         {
             Debug.Log(playerInfo.Value.NickName);
