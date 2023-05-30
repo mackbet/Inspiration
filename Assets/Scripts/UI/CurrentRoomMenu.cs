@@ -27,8 +27,10 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
         base.OnEnable();
 
         _isMasterClient = PhotonNetwork.IsMasterClient;
+
         _startButton.SetActive(_isMasterClient);
         _readyButton.SetActive(!_isMasterClient);
+        SetIsReady(false);
 
         playerListingsMenu.Show();
 
@@ -53,7 +55,6 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
             playerListings[index].SetIsReady(_ready);
         }
     }
-
 
     public void OnButtonClick_StartGame()
     {
@@ -103,8 +104,6 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
 
         }
     }
-
-
     [PunRPC]
     private void RPC_ChangeReadyState(Player player, bool ready)
     {
@@ -116,4 +115,5 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
             playerListings[index].SetIsReady(ready);
         }
     }
+
 }

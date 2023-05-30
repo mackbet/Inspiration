@@ -9,13 +9,17 @@ using System.Linq;
 public class GameManager : MonoBehaviourPun
 {
     [SerializeField] Spawner _spawner;
-
+    [SerializeField] ForestSpawner forestSpawner;
     [SerializeField] private Activator _monster;
+
+
     private void Start()
     {
+
         PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
         GameLoaded();
 
+        forestSpawner.SpawnForest();
         _spawner.SpawnPlayer().GetComponent<Activator>().Activate();
     }
 

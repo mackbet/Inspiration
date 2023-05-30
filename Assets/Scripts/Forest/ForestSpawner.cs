@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ForestSpawner : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class ForestSpawner : MonoBehaviour
                 if (!isValidIndex(new Vector2Int(i, j)))
                 {
                     Vector3 newPos = GetPositionFromIndex(new Vector2Int(i, j));
-                    Instantiate(walls[Random.Range(0, walls.Length)], newPos, Quaternion.identity, wallContainer);
+                    Instantiate(walls[RandomHelper.GetRandomInt(0, walls.Length)], newPos, Quaternion.identity, wallContainer);
                 }
             }
         }
@@ -81,13 +80,13 @@ public class ForestSpawner : MonoBehaviour
                 if (!isValidIndex(new Vector2Int(i, j)))
                     continue;
 
-                int isEnvObject = Random.Range(0, 100);
+                int isEnvObject = RandomHelper.GetRandomInt(0, 100);
                 if (isEnvObject < objectPercentage * 100)
                 {
                     Vector3 newPos = GetPositionFromIndex(new Vector2Int(i, j));
                     EnvironmentObjectPrefab eObj = GetRandomEnvironmentObject();
 
-                    GameObject newGO = Instantiate(eObj.models[Random.Range(0, eObj.models.Length)], newPos, Quaternion.identity, container);
+                    GameObject newGO = Instantiate(eObj.models[RandomHelper.GetRandomInt(0, eObj.models.Length)], newPos, Quaternion.identity, container);
 
                     Map[i, j] = new EnvironmentObject(eObj, newGO, new Vector2Int(i, j));
                     MarkObjectRadius(Map[i, j], eObj.radius);
@@ -125,7 +124,7 @@ public class ForestSpawner : MonoBehaviour
     #region Static Methods
     public EnvironmentObjectPrefab GetRandomEnvironmentObject()
     {
-        int rand = Random.Range(0, totalWeight);
+        int rand = RandomHelper.GetRandomInt(0, totalWeight);
 
         foreach (EnvironmentObjectPrefab eObj in eObjectPrefabs)
         {
@@ -158,14 +157,14 @@ public class ForestSpawner : MonoBehaviour
     }
     public static Vector3 GetRandomPosition()
     {
-        return GetPositionFromIndex(new Vector2Int(Random.Range(1, instance.width * instance.scale), Random.Range(1, instance.height * instance.scale)));
+        return GetPositionFromIndex(new Vector2Int(RandomHelper.GetRandomInt(1, instance.width * instance.scale), RandomHelper.GetRandomInt(1, instance.height * instance.scale)));
     }
     public static Vector3 GetRandomPosition(ObjectType type)
     {
         List<EnvironmentObject> list;
         if (instance.objectDictionary.TryGetValue(type, out list) && list.Count > 0)
         {
-            return GetPositionFromIndex(list[Random.Range(0, list.Count)].indices);
+            return GetPositionFromIndex(list[RandomHelper.GetRandomInt(0, list.Count)].indices);
         }
         else
             return GetRandomPosition();
