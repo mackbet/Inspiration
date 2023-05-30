@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 
 public class PlayerListingsMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Transform _container;
     [SerializeField] private PlayerListing _playerListing;
 
-    private List<PlayerListing> _listings = new List<PlayerListing>();
+    public List<PlayerListing> _listings { get; private set; } = new List<PlayerListing>();
 
     private void GetCurrentRoomPlayers()
     {
-        _container.DestroyChildren();
-        _listings.Clear();
+        if (!PhotonNetwork.IsConnected)
+            return;
+        if (PhotonNetwork.CurrentRoom.Players == null || PhotonNetwork.CurrentRoom == null)
+            return;
 
         var collection = PhotonNetwork.CurrentRoom.Players;
+        Debug.Log("GetCurrentRoomPlayers");
         foreach (KeyValuePair<int,Player> playerInfo in collection)
         {
+            Debug.Log(playerInfo.Value.NickName);
             AddPlayerListing(playerInfo.Value);
         }
         
@@ -30,6 +35,7 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
         listing.SetPlayerInfo(newPlayer);
 
         _listings.Add(listing);
+
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {

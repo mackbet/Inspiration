@@ -87,7 +87,7 @@ public class ForestSpawner : MonoBehaviour
                     Vector3 newPos = GetPositionFromIndex(new Vector2Int(i, j));
                     EnvironmentObjectPrefab eObj = GetRandomEnvironmentObject();
 
-                    GameObject newGO = Instantiate(eObj.models[Random.RandomRange(0, eObj.models.Length)], newPos, Quaternion.identity, container);
+                    GameObject newGO = Instantiate(eObj.models[Random.Range(0, eObj.models.Length)], newPos, Quaternion.identity, container);
 
                     Map[i, j] = new EnvironmentObject(eObj, newGO, new Vector2Int(i, j));
                     MarkObjectRadius(Map[i, j], eObj.radius);

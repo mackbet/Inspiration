@@ -10,6 +10,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public UnityEvent onConnectedToMaster;
     void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
 

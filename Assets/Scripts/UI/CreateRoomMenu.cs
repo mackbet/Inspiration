@@ -19,13 +19,14 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
+        options.BroadcastPropsChangeToAll = true;
 
         PhotonNetwork.JoinOrCreateRoom(roomName.text, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
     {
-        Debug.Log("Room " + PhotonNetwork.CurrentRoom.Name + " was created");
+        Debug.Log("OnCreatedRoom");
         OnRoomCreated.Invoke();
     }
 

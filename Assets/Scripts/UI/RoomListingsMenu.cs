@@ -15,6 +15,8 @@ public class RoomListingsMenu : MonoBehaviourPunCallbacks
     public UnityEvent OnRoomJoined;
     public override void OnJoinedRoom()
     {
+        Debug.Log("OnJoinedRoom");
+
         _container.DestroyChildren();
         _listings.Clear();
         OnRoomJoined.Invoke();
