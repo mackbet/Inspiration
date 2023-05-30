@@ -296,7 +296,7 @@ namespace FirstGearGames.PhotonNetworking.Utilities
 
             _nextSendPingTime = Time.unscaledTime + SEND_PING_INTERVAL;
 
-            base.photonView.RPC("RPC_ReceivePing", RpcTarget.All, PhotonNetwork.GetPing());
+            base.photonView.RPC("RPC_ReceivePing", RpcTarget.All, PhotonNetwork.LocalPlayer, PhotonNetwork.GetPing());
         }
 
         /// <summary>
