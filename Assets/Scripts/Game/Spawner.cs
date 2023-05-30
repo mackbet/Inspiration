@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
         GameObject newCharacter;
         while (true)
         {
-            Vector3 position = ForestSpawner.GetRandomPosition();
+            Vector3 position = ForestSpawner.GetRandomPosition(false);
 
             if (Vector3.Distance(position, Vector3.zero) > minDistance)
             {

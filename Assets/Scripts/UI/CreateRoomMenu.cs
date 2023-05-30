@@ -26,7 +26,6 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
-        Debug.Log("OnCreatedRoom");
         OnRoomCreated.Invoke();
     }
 

@@ -25,13 +25,8 @@ public class GameManager : MonoBehaviourPun
         _character = _spawner.SpawnPlayer();
 
 
-        RPC_GameLoaded(PhotonNetwork.LocalPlayer);
-
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
-            SendGameLoaded();
-        }
+        PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
+        SendGameLoaded();
     }
 
     private void NetworkingClient_EventReceived(EventData obj)
@@ -59,6 +54,7 @@ public class GameManager : MonoBehaviourPun
     private void RPC_GameLoaded(Player loadedPlayer)
     {
         Debug.Log($"Player {loadedPlayer.NickName} loaded!");
+
         playersCount = PhotonNetwork.CurrentRoom.Players.Count;
         loadedPlayersCount++;
         if(playersCount== loadedPlayersCount)

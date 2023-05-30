@@ -55,11 +55,11 @@ public class MasterManager : SingletonScriptableObject<MasterManager>
                 Instance._networkedPrefabs.Add(new NetworkedPrefab(results[i], path));
             }
         }
-
+        /*
         for (int i = 0; i < Instance._networkedPrefabs.Count; i++)
         {
             Debug.Log($"{Instance._networkedPrefabs[i].Prefab.name}, {Instance._networkedPrefabs[i].Path}");
-        }
+        }*/
 #endif
     }
 }

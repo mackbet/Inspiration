@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ForestSpawner : MonoBehaviour
 {
@@ -140,9 +141,12 @@ public class ForestSpawner : MonoBehaviour
     {
         return instance.transform.position - new Vector3(instance.width / 2, 0, instance.height / 2) + new Vector3(index.x / instance.scale, 0, index.y / instance.scale);
     }
-    public static Vector3 GetRandomPosition()
+    public static Vector3 GetRandomPosition(bool useSeed = false)
     {
-        return GetPositionFromIndex(new Vector2Int(RandomHelper.GetRandomInt(1, instance.width * instance.scale), RandomHelper.GetRandomInt(1, instance.height * instance.scale)));
+        if (useSeed)
+            return GetPositionFromIndex(new Vector2Int(RandomHelper.GetRandomInt(1, instance.width * instance.scale), RandomHelper.GetRandomInt(1, instance.height * instance.scale)));
+        else
+            return GetPositionFromIndex(new Vector2Int(Random.Range(1, instance.width * instance.scale), Random.Range(1, instance.height * instance.scale)));
     }
     public static Vector3 GetRandomPosition(ObjectType type)
     {
