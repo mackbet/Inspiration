@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour
 
             if (Vector3.Distance(position, Vector3.zero) > minDistance)
             {
-                newCharacter = MasterManager.NetworkInstantiate(_characterPrefab.gameObject, position, Quaternion.identity);
+                newCharacter = MasterManager.NetworkInstantiate(_characterPrefab.gameObject, Vector3.zero, Quaternion.identity);
                 break;
             }
 
