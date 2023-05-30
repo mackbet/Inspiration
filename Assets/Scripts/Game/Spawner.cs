@@ -14,22 +14,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minDistance;
 
 
-    public List<GameObject> SpawnPlayers(Player[] players)
-    {
-        List<GameObject> characters = new List<GameObject>();
-        foreach (Player player in players)
-        {
-            characters.Add(SpawnPlayer());
-        }
-        return characters;
-    }
-
     public void SpawnMonster()
     {
         MasterManager.NetworkInstantiate(_monsterPrefab.gameObject, Vector3.zero, Quaternion.identity);
     }
 
-    public GameObject SpawnPlayer()
+    public Character SpawnPlayer()
     {
         GameObject newCharacter;
         while (true)
@@ -43,6 +33,6 @@ public class Spawner : MonoBehaviour
             }
 
         }
-        return newCharacter;
+        return newCharacter.GetComponent<Character>();
     }
 }

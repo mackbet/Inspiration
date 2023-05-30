@@ -1370,8 +1370,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawner: {fileID: 784190799}
-  forestSpawner: {fileID: 1932433448}
   _monster: {fileID: 0}
+  onGameStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154671980}
+        m_TargetAssemblyTypeName: UIAnimation, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &256980744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,7 +3004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &490816218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8542,7 +8556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1154671978}
-  delay: 3
+  delay: 2
   opacity: 1
   onPanelShown:
     m_PersistentCalls:
@@ -14783,6 +14797,7 @@ MonoBehaviour:
     <models>k__BackingField:
     - {fileID: 5457682034327994965, guid: 2fb21ce5a03c15148ab4147f19f3b538, type: 3}
   container: {fileID: 977131966}
+  <audio>k__BackingField: {fileID: 2020791790}
   wallContainer: {fileID: 2004331818}
   walls:
   - {fileID: 6717484478892634406, guid: 76e0438fcaa98e7458b3963831119837, type: 3}
@@ -16082,8 +16097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29abfc51727e3ba4ca8c39a14882df91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flag: 0
-  i: 1
   noiseAudioSource: {fileID: 985193378}
   windAudioSource: {fileID: 1901739051}
   sounds:

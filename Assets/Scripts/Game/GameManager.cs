@@ -5,48 +5,66 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.Linq;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviourPun
 {
     [SerializeField] Spawner _spawner;
-    [SerializeField] ForestSpawner forestSpawner;
     [SerializeField] private Activator _monster;
+    private Character _character;
 
+    public UnityEvent onGameStarted;
+
+
+    int playersCount;
+    int loadedPlayersCount = 0;
 
     private void Start()
     {
+        ForestSpawner.instance.SpawnForest();
+        _character = _spawner.SpawnPlayer();
 
-        PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
-        GameLoaded();
 
-        forestSpawner.SpawnForest();
-        _spawner.SpawnPlayer().GetComponent<Activator>().Activate();
+        RPC_GameLoaded(PhotonNetwork.LocalPlayer);
+
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
+            SendGameLoaded();
+        }
     }
 
     private void NetworkingClient_EventReceived(EventData obj)
     {
-        if (obj.Code == GameEvents.PLAYER_LOADED_EVENT)
+        if (obj.Code == GameEvents.GAME_STARTED_EVENT)
         {
-            object[] data = (object[])obj.CustomData;
-            Player player = (Player)data[0];
-            Debug.Log($"{player.NickName} loaded!");
+            StartGame();
+            onGameStarted.Invoke();
         }
     }
-
-    private void GameLoaded()
+    private void StartGame()
     {
-        object[] data = new object[] { PhotonNetwork.LocalPlayer };
-        PhotonNetwork.RaiseEvent(GameEvents.PLAYER_LOADED_EVENT, data, RaiseEventOptions.Default, SendOptions.SendReliable);
+        ForestSpawner.instance.audio.PlaySounds();
+        _character.GetComponent<Activator>().Activate();
     }
 
-
-
-    public void StartGame()
+    public void SendGameLoaded()
     {
-        _spawner.SpawnPlayers(PhotonNetwork.CurrentRoom.Players.Values.ToArray());
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            base.photonView.RPC("RPC_GameLoaded", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
+        }
+    }
+    [PunRPC]
+    private void RPC_GameLoaded(Player loadedPlayer)
+    {
+        Debug.Log($"Player {loadedPlayer.NickName} loaded!");
+        playersCount = PhotonNetwork.CurrentRoom.Players.Count;
+        loadedPlayersCount++;
+        if(playersCount== loadedPlayersCount)
+            PhotonNetwork.RaiseEvent(GameEvents.GAME_STARTED_EVENT, null, RaiseEventOptions.Default, SendOptions.SendReliable);
 
     }
-
 
 
     private void OnDisable()

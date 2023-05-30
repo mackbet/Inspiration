@@ -25,14 +25,12 @@ public class SeedManager : MonoBehaviourPunCallbacks
     {
         if (!targetPlayer.IsMasterClient)
         {
-            Debug.Log("Sent seed " + seed);
             base.photonView.RPC("RPC_ChangeSeed", targetPlayer, seed);
         }
     }
     [PunRPC]
     private void RPC_ChangeSeed(int seed)
     {
-        Debug.Log("Got seed " + seed);
         RandomHelper.SetSeed(seed);
     }
 }

@@ -8,7 +8,6 @@ public class ForestSpawner : MonoBehaviour
     public static ForestSpawner instance;
 
     [SerializeField] private NavMeshSurface surface;
-
     [field: SerializeField] public int width { get; private set; }
     [field: SerializeField] public int height { get; private set; }
 
@@ -20,6 +19,7 @@ public class ForestSpawner : MonoBehaviour
 
     [SerializeField] private Transform container;
 
+    [field:SerializeField] public ForestAudio audio { get; private set; }
     public EnvironmentObject[,] Map { get; private set; }
     public MonsterMapCell[,] MonsterMap { get; private set; }
     public Dictionary<ObjectType, List<EnvironmentObject>> objectDictionary;
@@ -37,21 +37,6 @@ public class ForestSpawner : MonoBehaviour
         instance = this;
 
         Initialize();
-    }
-
-    private void SpawnRocks()
-    {
-        for (int i = 0; i < width * scale + 1; i+=step)
-        {
-            for (int j = 0; j < height * scale + 1; j+=step)
-            {
-                if (!isValidIndex(new Vector2Int(i, j)))
-                {
-                    Vector3 newPos = GetPositionFromIndex(new Vector2Int(i, j));
-                    Instantiate(walls[RandomHelper.GetRandomInt(0, walls.Length)], newPos, Quaternion.identity, wallContainer);
-                }
-            }
-        }
     }
 
     private void Initialize()

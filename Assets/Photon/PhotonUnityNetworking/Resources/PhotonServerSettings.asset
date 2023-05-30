@@ -44,6 +44,7 @@ MonoBehaviour:
   - RPC_ReceivePing
   - RPC_RequestMasterClient
   - RPC_ChangeSeed
+  - RPC_GameLoaded
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

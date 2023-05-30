@@ -1,4 +1,4 @@
 public static class GameEvents
 {
-    public static byte PLAYER_LOADED_EVENT = 0;
+    public static byte GAME_STARTED_EVENT = 0;
 }
