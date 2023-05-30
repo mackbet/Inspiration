@@ -18,19 +18,14 @@ public class SeedManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        base.OnPlayerEnteredRoom(newPlayer);
-    }
-
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        base.OnPlayerLeftRoom(otherPlayer);
+        SendSeed(newPlayer);
     }
 
     public void SendSeed(Player targetPlayer)
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (!targetPlayer.IsMasterClient)
         {
-            Debug.Log("Got sent " + seed);
+            Debug.Log("Sent seed " + seed);
             base.photonView.RPC("RPC_ChangeSeed", targetPlayer, seed);
         }
     }
