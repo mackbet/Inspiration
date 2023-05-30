@@ -1814,7 +1814,7 @@ MonoBehaviour:
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
-  m_UseLocal: 1
+  m_UseLocal: 0
 --- !u!1 &5716583579020914345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3130,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 7470391689958672205}
   - {fileID: 6443583342665350912}
+  - {fileID: 6143009855049669262}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
