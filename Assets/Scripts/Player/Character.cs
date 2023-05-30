@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviourPun
 {
     [SerializeField] private Movement _movement;
+    [SerializeField] private AudioController _audioController;
     [SerializeField] private GameObject camera;
     private void Awake()
     {
@@ -12,6 +13,8 @@ public class Character : MonoBehaviourPun
         {
             Destroy(_movement);
             Destroy(camera);
+
+            _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
         }
     }
 }

@@ -42,4 +42,18 @@ public class AudioController : MonoBehaviour
     {
         attackSound.Play();
     }
+
+    public void SetSpatialBlend(SpatialBlend type)
+    {
+        foreach (AudioSource audioSource in StepAudioSources)
+        {
+            audioSource.spatialBlend = type == SpatialBlend.Sounds2D ? 0 : 1;
+        }
+    }
+}
+
+public enum SpatialBlend
+{
+    Sounds2D,
+    Sounds3D,
 }
