@@ -10,8 +10,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public UnityEvent onConnectedToMaster;
     void Start()
     {
-        PhotonNetwork.SendRate = 20;//20
-        PhotonNetwork.SerializationRate = 5;//10
+        PhotonNetwork.SendRate = 25;//20
+        PhotonNetwork.SerializationRate = 15;//10
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
