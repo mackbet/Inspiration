@@ -34,21 +34,19 @@ public class GameManager : MonoBehaviourPun
         if (obj.Code == GameEvents.GAME_STARTED_EVENT)
         {
             StartGame();
-            onGameStarted.Invoke();
         }
     }
     private void StartGame()
     {
         ForestSpawner.instance.audio.PlaySounds();
         _character.GetComponent<Activator>().Activate();
+
+        onGameStarted.Invoke();
     }
 
     public void SendGameLoaded()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            base.photonView.RPC("RPC_GameLoaded", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        }
+        base.photonView.RPC("RPC_GameLoaded", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
     [PunRPC]
     private void RPC_GameLoaded(Player loadedPlayer)
@@ -57,8 +55,11 @@ public class GameManager : MonoBehaviourPun
 
         playersCount = PhotonNetwork.CurrentRoom.Players.Count;
         loadedPlayersCount++;
-        if(playersCount== loadedPlayersCount)
+        if (playersCount == loadedPlayersCount)
+        {
+            StartGame();
             PhotonNetwork.RaiseEvent(GameEvents.GAME_STARTED_EVENT, null, RaiseEventOptions.Default, SendOptions.SendReliable);
+        }
 
     }
 
@@ -67,4 +68,21 @@ public class GameManager : MonoBehaviourPun
     {
         PhotonNetwork.NetworkingClient.EventReceived -= NetworkingClient_EventReceived;
     }
+
+
+    #region CharacterMethods
+
+    public void DisableCharacter()
+    {
+        _character.DisableCameraRotator();
+        _character.DisableMovement();
+    }
+
+    public void EnableCharacter()
+    {
+        _character.EnableCameraRotator();
+        _character.EnableMovement();
+    }
+
+    #endregion
 }

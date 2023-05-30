@@ -96,6 +96,12 @@ public class Movement : MonoBehaviour
 
         onStateChanged.Invoke(_movementState);
     }
+
+    private void OnDisable()
+    {
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        onMoving.Invoke(Vector3.zero);
+    }
 }
 
 public enum MovementState

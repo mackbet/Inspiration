@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movement: {fileID: 8307581782941454270}
   _audioController: {fileID: 5446680586305583231}
-  camera: {fileID: 8307581783314644506}
+  camera: {fileID: 8307581783314644504}
 --- !u!114 &2009306688099247285
 MonoBehaviour:
   m_ObjectHideFlags: 0
