@@ -2496,8 +2496,11 @@ MonoBehaviour:
   _movement: {fileID: 8307581782941454270}
   _audioController: {fileID: 5446680586305583231}
   _characterAnimator: {fileID: 8307581782941454257}
-  camera: {fileID: 8307581783314644504}
+  cameraRotator: {fileID: 8307581783314644504}
   _monsterTracker: {fileID: 6373061514341460012}
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2009306688099247285
 MonoBehaviour:
   m_ObjectHideFlags: 0

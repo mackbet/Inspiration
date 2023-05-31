@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviourPun
     {
         ForestSpawner.instance.SpawnForest();
         _character = _spawner.SpawnPlayer();
-
+        _character.onDestroyed.AddListener(NextCamera);
 
         PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
         SendGameLoaded();
@@ -70,6 +70,21 @@ public class GameManager : MonoBehaviourPun
     }
 
 
+    private void NextCamera()
+    {
+        Character[] leftCharacters = FindObjectsOfType<Character>();
+
+        if (leftCharacters.Length > 0)
+        {
+            _character = leftCharacters[0];
+            _character.onDestroyed.AddListener(NextCamera);
+            leftCharacters[0].ActivateCamera();
+        }
+        else
+        {
+            Debug.Log("ALL ARE DEAD");
+        }
+    }
 
     private void OnDisable()
     {

@@ -3,6 +3,8 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class Character : MonoBehaviourPun
 {
 
@@ -10,17 +12,19 @@ public class Character : MonoBehaviourPun
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
     [SerializeField] private CharacterAnimator _characterAnimator;
-    [SerializeField] private CameraRotator camera;
+    [SerializeField] private CameraRotator cameraRotator;
     [SerializeField] private MonsterTracker _monsterTracker;
 
     private Player owner;
+
+    public UnityEvent onDestroyed;
     private void Awake()
     {
         if (!photonView.IsMine)
         {
             Destroy(_movement);
-            camera.enabled = false;
-            camera.camera.gameObject.SetActive(false);
+            cameraRotator.enabled = false;
+            cameraRotator.camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
 
@@ -44,17 +48,15 @@ public class Character : MonoBehaviourPun
     }
     public void DisableCameraRotator()
     {
-        if (camera != null)
-            camera.enabled = false;
+        if (cameraRotator != null)
+            cameraRotator.enabled = false;
     }
     public void EnableCameraRotator()
     {
-        if (camera != null)
-            camera.enabled = true;
+        if (cameraRotator != null)
+            cameraRotator.enabled = true;
     }
-
-
-    public void SendCharacterDead()
+    private void SendCharacterDead()
     {
         base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, owner);
 
@@ -68,7 +70,7 @@ public class Character : MonoBehaviourPun
         if (player == owner)
         {
             Dead();
-            //StartCoroutine(nextCamera());
+            StartCoroutine(DestroyCharacter());
         }
     }
 
@@ -78,23 +80,21 @@ public class Character : MonoBehaviourPun
         _characterAnimator.SetDeath();
     }
 
-    private IEnumerator nextCamera()
+    private IEnumerator DestroyCharacter()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
-        CameraRotator[] cameras = FindObjectsOfType<CameraRotator>();
-
-        if (cameras.Length > 0)
-        {
-            Destroy(camera.gameObject);
-            cameras[0].camera.gameObject.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("ALL ARE DEAD");
-        }
+        onDestroyed.Invoke();
+        Destroy(this);
     }
 
+    public void ActivateCamera()
+    {
+        if (!photonView.IsMine)
+        {
+            cameraRotator.camera.gameObject.SetActive(true);
+        }
+    }
 }
 
 [System.Serializable]
