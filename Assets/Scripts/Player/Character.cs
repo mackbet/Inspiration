@@ -18,7 +18,7 @@ public class Character : MonoBehaviourPun
         {
             Destroy(_movement);
             camera.enabled = false;
-            camera.gameObject.SetActive(false);
+            camera.camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
         }
@@ -73,7 +73,7 @@ public class Character : MonoBehaviourPun
     {
         Destroy(_movement);
 
-        StartCoroutine(nextCamera());
+        //StartCoroutine(nextCamera());
     }
 
     private IEnumerator nextCamera()
