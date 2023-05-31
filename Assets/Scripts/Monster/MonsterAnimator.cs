@@ -14,7 +14,6 @@ public class MonsterAnimator : MonoBehaviour
 
     private void StateSwitched(MonsterState state)
     {
-        Debug.Log(state);
         switch (state)
         {
             case MonsterState.idle:
