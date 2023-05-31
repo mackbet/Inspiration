@@ -17,6 +17,8 @@ public class PlayerListing : MonoBehaviourPunCallbacks
     public Player Player { get; private set; }
     public bool isReady = false;
 
+    private string _characterName;
+
     [Header("Colors")]
     public string CharacterNameColor;
 
@@ -29,7 +31,6 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         NickName = (string)player.CustomProperties["Nickname"];
 
 
-
         SetPlayerText(Player);
     }
 
@@ -38,7 +39,9 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
         if (targetPlayer != null && targetPlayer==Player)
         {
-            SetPlayerText(targetPlayer);
+            if (changedProps.ContainsKey("CharacterName"))
+                UpdateCharacterName();
+
         }
     }
 
@@ -47,13 +50,19 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         if(!player.IsMasterClient)
             _readyIcon.SetActive(isReady);
 
-        string name="";
-        CharacterName characterName = (CharacterName)player.CustomProperties["CharacterName"];
+
+        _textField.text = $"{NickName}  <color=#{CharacterNameColor}>{_characterName}</color>";
+    }
+
+    private void UpdateCharacterName()
+    {
+
+        CharacterName characterName = (CharacterName)Player.CustomProperties["CharacterName"];
         if (characterName != CharacterName.None)
-            name = characterName.ToString();
+            _characterName = characterName.ToString();
 
 
-        _textField.text = $"{NickName}  <color=#{CharacterNameColor}>{name}</color>";
+        SetPlayerText(Player);
     }
 
     public void SetIsReady(bool state)
