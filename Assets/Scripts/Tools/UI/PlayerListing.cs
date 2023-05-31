@@ -30,6 +30,8 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         Player = player;
         NickName = (string)player.CustomProperties["Nickname"];
 
+        if(player.CustomProperties.ContainsKey("Nickname"))
+            UpdateCharacterName();
 
         SetPlayerText(Player);
     }
@@ -42,6 +44,10 @@ public class PlayerListing : MonoBehaviourPunCallbacks
             if (changedProps.ContainsKey("CharacterName"))
                 UpdateCharacterName();
 
+
+
+
+            SetPlayerText(Player);
         }
     }
 
@@ -56,15 +62,12 @@ public class PlayerListing : MonoBehaviourPunCallbacks
 
     private void UpdateCharacterName()
     {
-
         CharacterName characterName = (CharacterName)Player.CustomProperties["CharacterName"];
         if (characterName != CharacterName.None)
             _characterName = characterName.ToString();
         else
             _characterName = "";
 
-
-        SetPlayerText(Player);
     }
 
     public void SetIsReady(bool state)
