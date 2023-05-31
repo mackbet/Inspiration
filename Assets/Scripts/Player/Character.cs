@@ -11,17 +11,21 @@ public class Character : MonoBehaviourPun
     [SerializeField] private CameraRotator camera;
     [SerializeField] private MonsterTracker _monsterTracker;
 
+    private Player owner;
     private void Awake()
     {
         if (!photonView.IsMine)
         {
             Destroy(_movement);
-            Destroy(camera.gameObject);
+            camera.enabled = false;
+            camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
 
             _monsterTracker.onTrackerCaptured.AddListener(SendCharacterDead);
         }
+
+        owner = photonView.Owner;
     }
 
     public void DisableMovement()
@@ -48,9 +52,8 @@ public class Character : MonoBehaviourPun
 
     public void SendCharacterDead()
     {
-        Player player = photonView.Owner;
 
-        base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, player);
+        base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, owner);
 
         Debug.Log($"{name} dead.");
     }
@@ -58,12 +61,34 @@ public class Character : MonoBehaviourPun
     [PunRPC]
     private void RPC_PlayerDead(Player player)
     {
-        if (player == PhotonNetwork.LocalPlayer)
+        if (player == owner)
         {
             _monsterTracker.Dead();
             Debug.Log("im dead");
         }
     }
+
+
+    public void Dead()
+    {
+        Destroy(_movement);
+
+        StartCoroutine(nextCamera());
+    }
+
+    private IEnumerator nextCamera()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(camera.gameObject);
+
+        CameraRotator[] cameras = FindObjectsOfType<CameraRotator>();
+
+        if (cameras.Length > 0)
+        {
+            cameras[0].gameObject.SetActive(true);
+        }
+    }
+
 }
 
 [System.Serializable]

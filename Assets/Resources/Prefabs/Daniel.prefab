@@ -3160,6 +3160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8307581783314644505}
   - component: {fileID: 8307581783314644504}
+  - component: {fileID: 1993996482018005285}
   m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
@@ -3198,6 +3199,23 @@ MonoBehaviour:
   sensitivity: 50
   maxYAngle: 50
   _camera: {fileID: 8307581783314644505}
+  <camera>k__BackingField: {fileID: 8307581782631181020}
+--- !u!114 &1993996482018005285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581783314644506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8307581783339579261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,10 +3303,10 @@ MonoBehaviour:
   onTrackerCaptured:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8307581782941454270}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 204472027829059120}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3300,18 +3318,6 @@ MonoBehaviour:
       - m_Target: {fileID: 8307581782941454257}
         m_TargetAssemblyTypeName: CharacterAnimator, Assembly-CSharp
         m_MethodName: SetDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: LoseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
