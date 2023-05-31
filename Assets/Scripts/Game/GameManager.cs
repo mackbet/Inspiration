@@ -96,12 +96,18 @@ public class GameManager : MonoBehaviourPun
 
     public void DisableCharacter()
     {
+        if (!_character.photonView.IsMine)
+            return;
+
         _character.DisableCameraRotator();
         _character.DisableMovement();
     }
 
     public void EnableCharacter()
     {
+        if (!_character.photonView.IsMine)
+            return;
+
         _character.EnableCameraRotator();
         _character.EnableMovement();
     }
