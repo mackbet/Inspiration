@@ -85,8 +85,12 @@ public class Character : MonoBehaviourPun
         yield return new WaitForSeconds(5);
 
         Destroy(cameraRotator.gameObject);
-        onDestroyed.Invoke();
         Destroy(this);
+    }
+
+    private void OnDestroy()
+    {
+        onDestroyed.Invoke();
     }
 
     public void ActivateCamera()

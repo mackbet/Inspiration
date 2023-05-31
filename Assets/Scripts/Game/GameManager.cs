@@ -90,11 +90,11 @@ public class GameManager : MonoBehaviourPun
     {
         PhotonNetwork.NetworkingClient.EventReceived -= NetworkingClient_EventReceived;
     }
+    
 
+        #region CharacterMethods
 
-    #region CharacterMethods
-
-    public void DisableCharacter()
+        public void DisableCharacter()
     {
         if (!_character.photonView.IsMine)
             return;
