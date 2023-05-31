@@ -17,8 +17,9 @@ public class Monster : MonoBehaviour
     [SerializeField] private float minSearchCellDistance;
     [SerializeField] private int maxSearchCellDistance;
     [SerializeField] private int checkRadius;
+    [SerializeField] private float attackDelay;
 
-    public Transform test;
+    //public Transform test;
 
     public GameObject scanedCellPrefab;
 
@@ -67,7 +68,7 @@ public class Monster : MonoBehaviour
 
             ScanCellsAround();
 
-            test.position = targetPosition;
+            //test.position = targetPosition;
         }
     }
 
@@ -238,10 +239,19 @@ public class Monster : MonoBehaviour
     }
     public void Attack(MonsterTracker victim)
     {
+        StartCoroutine(attack());
+
+        victim.Dead();
+    }
+    private IEnumerator attack()
+    {
         agent.isStopped = true;
         SetState(MonsterState.attacking);
 
-        victim.Dead();
+        yield return new WaitForSeconds(attackDelay);
+
+        agent.isStopped = false;
+        SetState(MonsterState.searching);
     }
     #endregion
 

@@ -15,9 +15,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minDistance;
 
 
-    public void SpawnMonster()
+    public Monster SpawnMonster()
     {
-        MasterManager.NetworkInstantiate(_monsterPrefab.gameObject, Vector3.zero, Quaternion.identity);
+        return MasterManager.NetworkInstantiate(_monsterPrefab.gameObject, Vector3.zero, Quaternion.identity).GetComponent<Monster>();
     }
 
     public Character SpawnPlayer()

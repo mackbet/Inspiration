@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &593816940255813996
 Transform:
   m_ObjectHideFlags: 0
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   minSearchCellDistance: 2
   maxSearchCellDistance: 15
   checkRadius: 5
-  test: {fileID: 0}
+  attackDelay: 2
   scanedCellPrefab: {fileID: 0}
   state: 0
 --- !u!114 &7672607494846485334

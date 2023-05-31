@@ -10,7 +10,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviourPun
 {
     [SerializeField] Spawner _spawner;
-    [SerializeField] private Activator _monster;
+    private Monster _monster;
     private Character _character;
 
     public UnityEvent onGameStarted;
@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviourPun
         ForestSpawner.instance.audio.PlaySounds();
         _character.GetComponent<Activator>().Activate();
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _monster = _spawner.SpawnMonster();
+            _monster.GetComponent<Activator>().Activate();
+        }
+
         onGameStarted.Invoke();
     }
 
@@ -62,6 +68,7 @@ public class GameManager : MonoBehaviourPun
         }
 
     }
+
 
 
     private void OnDisable()

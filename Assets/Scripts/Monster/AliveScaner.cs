@@ -18,7 +18,12 @@ public class AliveScaner : MonoBehaviour
 
     private void Start()
     {
+        Initialize();
+    }
 
+    private void Initialize()
+    {
+        trackers = FindObjectsOfType<MonsterTracker>();
     }
 
     void Update()
