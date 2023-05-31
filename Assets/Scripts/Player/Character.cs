@@ -84,8 +84,7 @@ public class Character : MonoBehaviourPun
     {
         yield return new WaitForSeconds(5);
 
-        Destroy(cameraRotator.gameObject);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     private void OnDestroy()
