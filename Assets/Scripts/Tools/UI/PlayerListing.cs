@@ -60,6 +60,8 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         CharacterName characterName = (CharacterName)Player.CustomProperties["CharacterName"];
         if (characterName != CharacterName.None)
             _characterName = characterName.ToString();
+        else
+            _characterName = "";
 
 
         SetPlayerText(Player);
