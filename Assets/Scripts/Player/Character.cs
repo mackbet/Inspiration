@@ -64,6 +64,7 @@ public class Character : MonoBehaviourPun
     [PunRPC]
     private void RPC_PlayerDead(Player player)
     {
+        Debug.Log(player.CustomProperties["Nickname"] + " dead!");
         if (player == owner)
         {
             Dead();
