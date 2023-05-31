@@ -87,6 +87,10 @@ public class Character : MonoBehaviourPun
         {
             cameras[0].camera.gameObject.SetActive(true);
         }
+        else
+        {
+            Debug.Log("ALL ARE DEAD");
+        }
     }
 
 }
