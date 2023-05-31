@@ -92,6 +92,20 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
         onLeftRoom.Invoke();
     }
 
+    public void IsNotReady()
+    {
+        if (!_isMasterClient)
+        {
+            SetIsReady(false);
+
+            base.photonView.RPC("RPC_ChangeReadyState", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, _ready);
+
+        }
+    }
+
+
+
+
     public void OnButtonClick_IsReady()
     {
         if (!_isMasterClient)

@@ -4,12 +4,18 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class CharacterSelection : MonoBehaviourPunCallbacks
 {
     [SerializeField] private SelectButton[] selectButtons;
-    [SerializeField] private UIButton _selectedUIButton;
+    private UIButton _selectedUIButton;
 
     private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
+
+    public UnityEvent onCharacterSelected;
+    public UnityEvent onCharacterDeselected;
+
     private void Start()
     {
         foreach (SelectButton sButton in selectButtons) {
@@ -32,6 +38,9 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);
 
         UpdateSelectButtons();
+
+        Debug.Log("onCharacterDeselected");
+        onCharacterDeselected.Invoke();
     }
 
     public void Select(SelectButton sButton)
@@ -45,6 +54,8 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
 
             _myCustomProperties["CharacterName"] = CharacterName.None;
             PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);
+
+            onCharacterDeselected.Invoke();
         }
         else
         {
@@ -59,6 +70,9 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
 
             _myCustomProperties["CharacterName"] = sButton.name;
             PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);
+
+            Debug.Log("onCharacterSelected");
+            onCharacterSelected.Invoke();
         }
     }
 

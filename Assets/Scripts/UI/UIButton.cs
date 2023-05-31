@@ -13,13 +13,16 @@ public class UIButton : MonoBehaviour
 
     [SerializeField] private Color disabledColor;
 
-    private Color _defaultColor;
+    [SerializeField] private bool _defaultManualy;
+    [SerializeField] private Color _defaultColor;
 
     public UnityEvent onClick;
 
     private void Awake()
     {
-        _defaultColor = _image.color;
+        if(!_defaultManualy)
+            _defaultColor = _image.color;
+
         _button.onClick.AddListener(() => { onClick.Invoke(); });
     }
     public void EnableOutline()
