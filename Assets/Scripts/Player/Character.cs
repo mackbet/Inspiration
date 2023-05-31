@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Character : MonoBehaviourPun
 {
+
     [field:SerializeField] public CharacterName name { get; private set; }
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
@@ -63,28 +64,21 @@ public class Character : MonoBehaviourPun
     {
         if (player == owner)
         {
+            Destroy(_movement);
             _monsterTracker.Dead();
-            Debug.Log("im dead");
+            //StartCoroutine(nextCamera());
         }
-    }
-
-
-    public void Dead()
-    {
-        Destroy(_movement);
-
-        StartCoroutine(nextCamera());
     }
 
     private IEnumerator nextCamera()
     {
         yield return new WaitForSeconds(3);
-        Destroy(camera.gameObject);
 
         CameraRotator[] cameras = FindObjectsOfType<CameraRotator>();
 
         if (cameras.Length > 0)
         {
+            Destroy(camera.gameObject);
             cameras[0].camera.gameObject.SetActive(true);
         }
         else
