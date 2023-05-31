@@ -73,7 +73,7 @@ public class Character : MonoBehaviourPun
     {
         Destroy(_movement);
 
-        //StartCoroutine(nextCamera());
+        StartCoroutine(nextCamera());
     }
 
     private IEnumerator nextCamera()
@@ -85,7 +85,7 @@ public class Character : MonoBehaviourPun
 
         if (cameras.Length > 0)
         {
-            cameras[0].gameObject.SetActive(true);
+            cameras[0].camera.gameObject.SetActive(true);
         }
     }
 
