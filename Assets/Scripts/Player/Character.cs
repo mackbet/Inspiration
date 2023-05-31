@@ -54,6 +54,16 @@ public class Character : MonoBehaviourPun
 
         Debug.Log($"{name} dead.");
     }
+
+    [PunRPC]
+    private void RPC_PlayerDead(Player player)
+    {
+        if (player == PhotonNetwork.LocalPlayer)
+        {
+            _monsterTracker.Dead();
+            Debug.Log("im dead");
+        }
+    }
 }
 
 [System.Serializable]
