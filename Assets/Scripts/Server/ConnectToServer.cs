@@ -10,6 +10,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public UnityEvent onConnectedToMaster;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        if (PhotonNetwork.CurrentRoom != null)
+            PhotonNetwork.LeaveRoom();
+
         PhotonNetwork.SendRate = 25;//20
         PhotonNetwork.SerializationRate = 15;//10
         PhotonNetwork.AutomaticallySyncScene = true;
