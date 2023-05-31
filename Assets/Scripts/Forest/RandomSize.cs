@@ -8,7 +8,7 @@ public class RandomSize : MonoBehaviour
     [SerializeField] private float maxSize;
     void Start()
     {
-        float size = Random.Range(minSize, maxSize);
+        float size = RandomHelper.GetRandomFloat(minSize, maxSize);
         transform.localScale = new Vector3(size, size, size);
     }
 }
