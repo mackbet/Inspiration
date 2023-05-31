@@ -24,7 +24,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void SetDeath()
     {
-        _movement.transform.parent = null;
+        animator.transform.parent = null;
         animator.SetFloat("speed", 0);
         animator.SetBool("isDead", true);
         Destroy(this);
