@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviourPun
     {
         Character[] leftCharacters = FindObjectsOfType<Character>();
         Debug.Log("leftCharacters " + leftCharacters.Length);
-        if (leftCharacters.Length > 0)
+        if (leftCharacters.Length > 1)
         {
             _character = leftCharacters[0];
             _character.onDestroyed.AddListener(NextCamera);
