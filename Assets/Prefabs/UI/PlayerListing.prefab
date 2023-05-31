@@ -276,6 +276,7 @@ MonoBehaviour:
   _leaderIcon: {fileID: 7421994202276888755}
   _readyIcon: {fileID: 7882082494482507196}
   isReady: 0
+  CharacterNameColor: D67C00
 --- !u!1 &6680769620557558575
 GameObject:
   m_ObjectHideFlags: 0

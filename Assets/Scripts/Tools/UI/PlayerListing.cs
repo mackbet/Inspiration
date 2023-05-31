@@ -16,6 +16,10 @@ public class PlayerListing : MonoBehaviourPunCallbacks
 
     public Player Player { get; private set; }
     public bool isReady = false;
+
+    [Header("Colors")]
+    public string CharacterNameColor;
+
     public void SetPlayerInfo(Player player)
     {
         _leaderIcon.SetActive(player.IsMasterClient);
@@ -43,7 +47,13 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         if(!player.IsMasterClient)
             _readyIcon.SetActive(isReady);
 
-        _textField.text = $"{NickName}";
+        string name="";
+        CharacterName characterName = (CharacterName)player.CustomProperties["CharacterName"];
+        if (characterName != CharacterName.None)
+            name = characterName.ToString();
+
+
+        _textField.text = $"{NickName}  <color=#{CharacterNameColor}>{name}</color>";
     }
 
     public void SetIsReady(bool state)
