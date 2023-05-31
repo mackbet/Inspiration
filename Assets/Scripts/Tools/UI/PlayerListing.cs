@@ -28,9 +28,10 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         isReady = player.IsMasterClient;
 
         Player = player;
+
         NickName = (string)player.CustomProperties["Nickname"];
 
-        if(player.CustomProperties.ContainsKey("Nickname"))
+        if(Player.CustomProperties.ContainsKey("CharacterName"))
             UpdateCharacterName();
 
         SetPlayerText(Player);
