@@ -58,23 +58,21 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
 
     public void OnButtonClick_StartGame()
     {
-        if (_isMasterClient)
+        List<PlayerListing> playerListings = playerListingsMenu._listings;
+
+        foreach (PlayerListing listing in playerListings)
         {
-            List<PlayerListing> playerListings = playerListingsMenu._listings;
-
-            foreach (PlayerListing listing in playerListings)
+            if(!listing.isReady)
             {
-                if(!listing.isReady)
-                {
-                    return;
-                }
+                Debug.Log($"Player {listing.NickName} is not ready");
+                return;
             }
-
-
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel(3);
         }
+
+
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.LoadLevel(3);
     }
 
     public void OnButtonClick_Leave()

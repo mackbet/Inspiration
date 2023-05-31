@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Character : MonoBehaviourPun
 {
+    [field:SerializeField] public CharacterName name { get; private set; }
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
     [SerializeField] private CameraRotator camera;
+
     private void Awake()
     {
         if (!photonView.IsMine)
@@ -39,4 +41,14 @@ public class Character : MonoBehaviourPun
         if (camera != null)
             camera.enabled = true;
     }
+}
+
+[System.Serializable]
+public enum CharacterName
+{
+    None,
+    John,
+    Emma,
+    Daniel,
+    Isabellla
 }

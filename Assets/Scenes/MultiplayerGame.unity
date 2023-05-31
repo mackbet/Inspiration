@@ -2321,7 +2321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11e0b8b3bd49704e8a31a71b813cfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterPrefab: {fileID: 204472027829059120, guid: 050050a0103610a4c89446908d19adbb, type: 3}
+  _characterPrefabs:
+  - {fileID: 204472027829059120, guid: 050050a0103610a4c89446908d19adbb, type: 3}
+  - {fileID: 204472027829059120, guid: 3c1ca430489cd8e4abd660720219e73e, type: 3}
+  - {fileID: 204472027829059120, guid: 1446adb8fd5911a4b9f94911e4aa13cd, type: 3}
+  - {fileID: 204472027829059120, guid: 958864744491c8e4a8029882638074b2, type: 3}
   _monsterPrefab: {fileID: 233752422333605012, guid: 22c03fae9472d3343b3169d4a79206af, type: 3}
   minDistance: 25
 --- !u!1 &858771901

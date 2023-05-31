@@ -9,6 +9,7 @@ using System;
 public class PlayerListing : MonoBehaviourPunCallbacks
 {
     [SerializeField] TextMeshProUGUI _textField;
+    [SerializeField] public string NickName { get; private set; }
 
     [SerializeField] GameObject _leaderIcon;
     [SerializeField] GameObject _readyIcon;
@@ -17,12 +18,13 @@ public class PlayerListing : MonoBehaviourPunCallbacks
     public bool isReady = false;
     public void SetPlayerInfo(Player player)
     {
-        if (player.IsMasterClient)
-            _leaderIcon.SetActive(true);
-        else
-            _leaderIcon.SetActive(false);
+        _leaderIcon.SetActive(player.IsMasterClient);
+        isReady = player.IsMasterClient;
 
         Player = player;
+        NickName = (string)player.CustomProperties["Nickname"];
+
+
 
         SetPlayerText(Player);
     }
@@ -41,9 +43,7 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         if(!player.IsMasterClient)
             _readyIcon.SetActive(isReady);
 
-        string Nicknname = (string)player.CustomProperties["Nickname"];
-
-        _textField.text = $"{Nicknname}";
+        _textField.text = $"{NickName}";
     }
 
     public void SetIsReady(bool state)

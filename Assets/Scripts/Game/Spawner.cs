@@ -6,7 +6,8 @@ using Photon.Realtime;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Character _characterPrefab;
+    public static CharacterName name;
+    [SerializeField] private List<Character> _characterPrefabs;
 
     [SerializeField] private Monster _monsterPrefab;
 
@@ -21,14 +22,14 @@ public class Spawner : MonoBehaviour
 
     public Character SpawnPlayer()
     {
-        GameObject newCharacter;
+        GameObject newCharacter = _characterPrefabs[_characterPrefabs.FindIndex(x => x.name == name)].gameObject;
         while (true)
         {
             Vector3 position = ForestSpawner.GetRandomPosition(false);
 
             if (Vector3.Distance(position, Vector3.zero) > minDistance)
             {
-                newCharacter = MasterManager.NetworkInstantiate(_characterPrefab.gameObject, position, Quaternion.identity);
+                newCharacter = MasterManager.NetworkInstantiate(newCharacter, position, Quaternion.identity);
                 break;
             }
 
