@@ -9,6 +9,7 @@ public class Character : MonoBehaviourPun
     [field:SerializeField] public CharacterName name { get; private set; }
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
+    [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private CameraRotator camera;
     [SerializeField] private MonsterTracker _monsterTracker;
 
@@ -22,9 +23,10 @@ public class Character : MonoBehaviourPun
             camera.camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
+
         }
 
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
             _monsterTracker.onTrackerCaptured.AddListener(SendCharacterDead);
 
         owner = photonView.Owner;
@@ -54,7 +56,7 @@ public class Character : MonoBehaviourPun
 
     public void SendCharacterDead()
     {
-        base.photonView.RPC("RPC_PlayerDead", RpcTarget.Others, owner);
+        base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, owner);
 
         Debug.Log($"{name} dead.");
     }
@@ -64,10 +66,15 @@ public class Character : MonoBehaviourPun
     {
         if (player == owner)
         {
-            Destroy(_movement);
-            _monsterTracker.Dead();
+            Dead();
             //StartCoroutine(nextCamera());
         }
+    }
+
+    private void Dead()
+    {
+        Destroy(_movement);
+        _characterAnimator.SetDeath();
     }
 
     private IEnumerator nextCamera()

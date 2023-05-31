@@ -3020,6 +3020,7 @@ MonoBehaviour:
   <name>k__BackingField: 3
   _movement: {fileID: 8307581782941454270}
   _audioController: {fileID: 5446680586305583231}
+  _characterAnimator: {fileID: 8307581782941454257}
   camera: {fileID: 8307581783314644504}
   _monsterTracker: {fileID: 6373061514341460012}
 --- !u!114 &2009306688099247285
@@ -3303,19 +3304,7 @@ MonoBehaviour:
   - {fileID: 7942363905963464132}
   onTrackerCaptured:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8307581782941454257}
-        m_TargetAssemblyTypeName: CharacterAnimator, Assembly-CSharp
-        m_MethodName: SetDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4930184829893092462
 MonoBehaviour:
   m_ObjectHideFlags: 0
