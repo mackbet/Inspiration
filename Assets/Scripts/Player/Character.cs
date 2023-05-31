@@ -21,9 +21,10 @@ public class Character : MonoBehaviourPun
             camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
-
-            _monsterTracker.onTrackerCaptured.AddListener(SendCharacterDead);
         }
+
+        if(PhotonNetwork.IsMasterClient)
+            _monsterTracker.onTrackerCaptured.AddListener(SendCharacterDead);
 
         owner = photonView.Owner;
     }
@@ -52,7 +53,6 @@ public class Character : MonoBehaviourPun
 
     public void SendCharacterDead()
     {
-
         base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, owner);
 
         Debug.Log($"{name} dead.");
