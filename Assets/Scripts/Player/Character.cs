@@ -53,7 +53,7 @@ public class Character : MonoBehaviourPun
 
     public void SendCharacterDead()
     {
-        base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, owner);
+        base.photonView.RPC("RPC_PlayerDead", RpcTarget.Others, owner);
 
         Debug.Log($"{name} dead.");
     }
