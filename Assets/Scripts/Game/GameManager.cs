@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviourPun
 {
     [SerializeField] Spawner _spawner;
     private Monster _monster;
-    private Character _character;
+    [SerializeField] private Character _character;
 
     public UnityEvent onGameStarted;
 
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviourPun
 
     private void NextCamera()
     {
+        Debug.Log("NextCamera");
         Character[] leftCharacters = FindObjectsOfType<Character>();
 
         if (leftCharacters.Length > 0)
