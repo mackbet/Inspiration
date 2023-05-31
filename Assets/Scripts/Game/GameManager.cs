@@ -82,9 +82,15 @@ public class GameManager : MonoBehaviourPun
         }
         else
         {
-            Debug.Log("ALL ARE DEAD");
+            EndGame();
         }
     }
+
+    private void EndGame()
+    {
+        PhotonNetwork.LoadLevel(0);
+    }
+
 
     private void OnDisable()
     {
