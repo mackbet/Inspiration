@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Character : MonoBehaviourPun
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
     [SerializeField] private CameraRotator camera;
+    [SerializeField] private MonsterTracker _monsterTracker;
 
     private void Awake()
     {
@@ -17,6 +19,8 @@ public class Character : MonoBehaviourPun
             Destroy(camera.gameObject);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
+
+            _monsterTracker.onTrackerCaptured.AddListener(SendCharacterDead);
         }
     }
 
@@ -30,7 +34,6 @@ public class Character : MonoBehaviourPun
         if (_movement != null)
             _movement.enabled = true;
     }
-
     public void DisableCameraRotator()
     {
         if (camera != null)
@@ -40,6 +43,16 @@ public class Character : MonoBehaviourPun
     {
         if (camera != null)
             camera.enabled = true;
+    }
+
+
+    public void SendCharacterDead()
+    {
+        Player player = photonView.Owner;
+
+        base.photonView.RPC("RPC_PlayerDead", RpcTarget.All, player);
+
+        Debug.Log($"{name} dead.");
     }
 }
 

@@ -1,3 +1,5 @@
+using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +14,15 @@ public class MonsterTracker : MonoBehaviour
     {
         onTrackerCaptured.Invoke();
         Destroy(this);
+    }
+
+    [PunRPC]
+    private void RPC_PlayerDead(Player player)
+    {
+        if (player == PhotonNetwork.LocalPlayer)
+        {
+            Dead();
+            Debug.Log("im dead");
+        }
     }
 }

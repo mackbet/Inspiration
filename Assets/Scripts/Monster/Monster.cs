@@ -239,9 +239,8 @@ public class Monster : MonoBehaviour
     }
     public void Attack(MonsterTracker victim)
     {
-        StartCoroutine(attack());
-
         victim.Dead();
+        StartCoroutine(attack());
     }
     private IEnumerator attack()
     {
