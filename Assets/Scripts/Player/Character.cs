@@ -84,7 +84,7 @@ public class Character : MonoBehaviourPun
     {
         yield return new WaitForSeconds(5);
 
-        Destroy(_movement.gameObject);
+        Destroy(cameraRotator.gameObject);
         onDestroyed.Invoke();
         Destroy(this);
     }
