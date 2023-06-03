@@ -42,9 +42,9 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
     {
         _ready = state;
         if (_ready)
-            _readyButtonText.text = "Ready";
-        else
             _readyButtonText.text = "Not ready";
+        else
+            _readyButtonText.text = "Ready";
 
 
         List<PlayerListing> playerListings = playerListingsMenu._listings;
