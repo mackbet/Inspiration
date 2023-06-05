@@ -9,6 +9,7 @@ public class ChatList : MonoBehaviour
 {
     [SerializeField] private Transform container;
     [SerializeField] private ChatItem chatItem;
+    [SerializeField] private ChatManager chatManager;
 
     private void Start()
     {
@@ -16,6 +17,14 @@ public class ChatList : MonoBehaviour
 
         foreach (Player player in players)
         {
+            if (player != PhotonNetwork.LocalPlayer)
+            {
+                ChatItem newChatItem = Instantiate(chatItem, container);
+
+                newChatItem.SetPlayer(player);
+
+                newChatItem.onClick.AddListener(() => chatManager.OpenChat(newChatItem));
+            }
         }
     }
 }
