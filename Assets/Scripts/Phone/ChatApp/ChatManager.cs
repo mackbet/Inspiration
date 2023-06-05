@@ -28,6 +28,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        PhoneManager.instance.onNetworkPowerChanged.AddListener(CheckBuffer);
 
         myCharacter = (CharacterName)PhotonNetwork.LocalPlayer.CustomProperties["CharacterName"];
 

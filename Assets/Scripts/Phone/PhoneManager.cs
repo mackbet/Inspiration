@@ -6,21 +6,28 @@ using UnityEngine.UI;
 
 public class PhoneManager : MonoBehaviour
 {
+    public static PhoneManager instance;
+
     [SerializeField] private GameManager GM;
     [SerializeField] private Image battareyFiller;
     [SerializeField] private Image signalFiller;
 
     private int[,] map;
-    private bool isDisplayActive;
+    [SerializeField] private bool isDisplayActive = false;
     [SerializeField] private int networkPointCount;
     [SerializeField] private int pointStartPower;
 
     public static float battery { get; private set; } = 100;
     public static int networkPower { get; private set; } = 0;
 
-    public static UnityEvent onNetworkPowerChanged;
+    public UnityEvent onNetworkPowerChanged;
 
     [SerializeField] GameObject cube;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -46,6 +53,7 @@ public class PhoneManager : MonoBehaviour
 
             if (isDisplayActive)
             {
+                Debug.Log(isDisplayActive);
                 signalFiller.fillAmount = (float)networkPower / pointStartPower;
 
                 battery -= 0.5f;
