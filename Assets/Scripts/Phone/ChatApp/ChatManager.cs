@@ -78,6 +78,8 @@ public class ChatManager : MonoBehaviourPunCallbacks
 
         StartCoroutine(updateMessageList());
     }
+
+    [PunRPC]
     private void RPC_ChatMessage(string text, CharacterName owner)
     {
         Message newMessage = Instantiate(MessagePrefab, container);
