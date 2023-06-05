@@ -100,6 +100,11 @@ public class Character : MonoBehaviourPun
             cameraRotator.camera.gameObject.SetActive(true);
         }
     }
+
+    public Vector3 GetPLayerPosition()
+    {
+        return _monsterTracker.transform.position;
+    }
 }
 
 [System.Serializable]

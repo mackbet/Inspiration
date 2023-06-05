@@ -15,7 +15,14 @@ public class GameManager : MonoBehaviourPun
 
     public UnityEvent onGameStarted;
 
-
+    public Vector3 playerPos 
+    { 
+        get
+        { 
+            return _character.GetPLayerPosition();
+        }
+        private set { }
+    }
     int playersCount;
     int loadedPlayersCount = 0;
 
@@ -96,13 +103,18 @@ public class GameManager : MonoBehaviourPun
     {
         PhotonNetwork.NetworkingClient.EventReceived -= NetworkingClient_EventReceived;
     }
-    
 
-        #region CharacterMethods
 
-        public void DisableCharacter()
+    #region CharacterMethods
+    int disableCount = 0;
+    public void DisableCharacter()
     {
+        disableCount++;
+
         if (!_character.photonView.IsMine)
+            return;
+
+        if (disableCount <= 0)
             return;
 
         _character.DisableCameraRotator();
@@ -111,7 +123,12 @@ public class GameManager : MonoBehaviourPun
 
     public void EnableCharacter()
     {
+        disableCount--;
+
         if (!_character.photonView.IsMine)
+            return;
+
+        if (disableCount > 0)
             return;
 
         _character.EnableCameraRotator();

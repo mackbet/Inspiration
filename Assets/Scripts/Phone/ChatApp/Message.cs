@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class Message : MonoBehaviour
 {
     [SerializeField] private RectTransform rect;
     [SerializeField] private TextMeshProUGUI textField;
+
+    [SerializeField] private Image background;
 
     public void SetMyMessage(string text)
     {
@@ -25,5 +29,9 @@ public class Message : MonoBehaviour
         textField.text = text;
 
         gameObject.SetActive(true);
+    }
+    public void ShowError()
+    {
+        background.color = Color.red;
     }
 }

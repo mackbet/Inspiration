@@ -70,14 +70,17 @@ public class ChatManager : MonoBehaviourPunCallbacks
     public void SendMessage(TMP_InputField inputField)
     {
         Message newMessage = Instantiate(MessagePrefab, container);
-
         newMessage.SetMyMessage(inputField.text);
-
         ChatHistory[selectedChat].Add(newMessage);
 
-        base.photonView.RPC("RPC_ChatMessage", selectedPlayer, inputField.text, myCharacter);
+        if (PhoneManager.networkPower > 10)
+            base.photonView.RPC("RPC_ChatMessage", selectedPlayer, inputField.text, myCharacter);
+        else
+            newMessage.ShowError();
 
         StartCoroutine(updateMessageList());
+
+        inputField.text = "";
     }
 
     [PunRPC]

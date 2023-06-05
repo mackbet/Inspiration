@@ -7,7 +7,7 @@ public class KeyBoardManager : MonoBehaviour
 {
     [SerializeField] KeyBoardButton[] keyBoardButtons;
 
-    private int lockCount = 0;
+    private int unlockCount = 1;
     private void Update()
     {
         foreach (KeyBoardButton button in keyBoardButtons)
@@ -30,18 +30,18 @@ public class KeyBoardManager : MonoBehaviour
 
     public void LockCursor()
     {
-        lockCount++;
+        unlockCount--;
 
-        if (lockCount == 0)
+        if (unlockCount > 0)
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
     }
     public void UnlockCursor()
     {
-        lockCount--;
+        unlockCount++;
 
-        if(lockCount==0)
+        if(unlockCount > 0)
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
