@@ -5238,7 +5238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 1365363258}
   MessagePrefab: {fileID: 5652469731047950766, guid: cdaaaa65d49d30f49b97d7b2b2735869, type: 3}
-  ChatPage: {fileID: 677982196}
+  ChatPage: {fileID: 677982200}
   ChatTitle: {fileID: 1777094947}
   verticalLayoutGroup: {fileID: 1365363260}
 --- !u!114 &1002590487
