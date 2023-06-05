@@ -17,6 +17,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
     private Dictionary<CharacterName, List<Message>> ChatHistory = new Dictionary<CharacterName, List<Message>>();
     [SerializeField] private Message MessagePrefab;
     [SerializeField] private GameObject ChatPage;
+    [SerializeField] private TextMeshProUGUI ChatTitle;
 
 
     [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
@@ -34,6 +35,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
 
     public void OpenChat(ChatItem targetChat)
     {
+        ChatTitle.text = (string)targetChat.Player.CustomProperties["Nickname"];
         ChatPage.SetActive(true);
 
         if (selectedChat!=CharacterName.None && !ChatHistory.ContainsKey(selectedChat))
@@ -84,7 +86,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
     {
         Message newMessage = Instantiate(MessagePrefab, container);
 
-        newMessage.SetMyMessage(text);
+        newMessage.Set—ompanionMessage(text);
 
         ChatHistory[owner].Add(newMessage);
 

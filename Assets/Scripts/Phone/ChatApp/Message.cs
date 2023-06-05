@@ -10,6 +10,11 @@ public class Message : MonoBehaviour
     public void SetMyMessage(string text)
     {
         rect.pivot = new Vector2(1, 0);
+
+        Vector2 newPosition = rect.anchoredPosition;
+        newPosition.x = 0;
+        rect.anchoredPosition = newPosition;
+
         textField.text = text;
 
         gameObject.SetActive(true);
