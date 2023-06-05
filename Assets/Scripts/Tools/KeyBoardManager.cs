@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class KeyBoardManager : MonoBehaviour
 {
     [SerializeField] KeyBoardButton[] keyBoardButtons;
+
+    private int lockCount = 0;
     private void Update()
     {
         foreach (KeyBoardButton button in keyBoardButtons)
@@ -28,10 +30,20 @@ public class KeyBoardManager : MonoBehaviour
 
     public void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        lockCount++;
+
+        if (lockCount == 0)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
     public void UnlockCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
+        lockCount--;
+
+        if(lockCount==0)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
 }
