@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PhoneManager : MonoBehaviour
@@ -10,31 +11,29 @@ public class PhoneManager : MonoBehaviour
     [SerializeField] private Image signalFiller;
 
     private int[,] map;
+    private bool isDisplayActive;
     [SerializeField] private int networkPointCount;
     [SerializeField] private int pointStartPower;
 
     public static float battery { get; private set; } = 100;
     public static int networkPower { get; private set; } = 0;
+
+    public static UnityEvent onNetworkPowerChanged;
+
     [SerializeField] GameObject cube;
 
     private void Start()
     {
         CreateNetworkMap();
+        StartCoroutine(work());
     }
-
-    Coroutine coroutine;
     public void PhoneActivated()
     {
-        PhoneDeactivated();
-
-        coroutine = StartCoroutine(work());
+        isDisplayActive = true;
     }
     public void PhoneDeactivated()
     {
-        if (coroutine != null)
-            StopCoroutine(coroutine);
-
-        coroutine = null;
+        isDisplayActive = false;
     }
 
     IEnumerator work()
@@ -44,12 +43,16 @@ public class PhoneManager : MonoBehaviour
             Vector3 pos = GM.playerPos;
             Vector2Int index = ForestSpawner.GetIndexFromPosition(pos);
             networkPower = map[index.x, index.y];
-            signalFiller.fillAmount = (float)networkPower / pointStartPower;
 
-            battery -= 0.5f;
+            if (isDisplayActive)
+            {
+                signalFiller.fillAmount = (float)networkPower / pointStartPower;
 
-            battareyFiller.fillAmount = battery / 100;
+                battery -= 0.5f;
+                battareyFiller.fillAmount = battery / 100;
+            }
 
+            onNetworkPowerChanged.Invoke();
             yield return new WaitForSeconds(2f);
         }
     }
@@ -70,7 +73,7 @@ public class PhoneManager : MonoBehaviour
 
     private void SetPoint(Vector2Int index, int power)
     {
-        if (!ForestSpawner.isValidIndex(index) || power<0)
+        if (!ForestSpawner.isValidIndex(index) || power < 0)
             return;
 
         if (map[index.x, index.y] < power)
@@ -89,8 +92,8 @@ public class PhoneManager : MonoBehaviour
             }
         }
 
-        
+
     }
-
-
 }
+
+

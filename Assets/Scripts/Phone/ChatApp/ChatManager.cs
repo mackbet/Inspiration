@@ -28,6 +28,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+
         myCharacter = (CharacterName)PhotonNetwork.LocalPlayer.CustomProperties["CharacterName"];
 
         Player[] players = PhotonNetwork.CurrentRoom.Players.Values.ToArray();
@@ -38,7 +39,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
         ChatTitle.text = (string)targetChat.Player.CustomProperties["Nickname"];
         ChatPage.Move();
 
-        if (selectedChat!=CharacterName.None && !ChatHistory.ContainsKey(selectedChat))
+        if (selectedChat != CharacterName.None && !ChatHistory.ContainsKey(selectedChat))
         {
             List<Message> messages = ChatHistory[selectedChat];
 
@@ -66,7 +67,6 @@ public class ChatManager : MonoBehaviourPunCallbacks
         }
 
     }
-
     public void SendMessage(TMP_InputField inputField)
     {
         Message newMessage = Instantiate(MessagePrefab, container);
@@ -86,20 +86,46 @@ public class ChatManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_ChatMessage(string text, CharacterName owner)
     {
+        SavedMessage newSM = new SavedMessage(text, owner);
+        if (PhoneManager.networkPower > 10)
+        {
+            AddMessage(newSM);
+        }
+        else
+        {
+            buffer.Add(newSM);
+        }
+    }
+
+    private void AddMessage(SavedMessage sm)
+    {
         Message newMessage = Instantiate(MessagePrefab, container);
 
-        newMessage.Set—ompanionMessage(text);
+        newMessage.Set—ompanionMessage(sm.text);
 
-        ChatHistory[owner].Add(newMessage);
+        ChatHistory[sm.owner].Add(newMessage);
 
-        if (selectedChat != owner)
+        if (selectedChat != sm.owner)
             newMessage.gameObject.SetActive(false);
 
         StartCoroutine(updateMessageList());
     }
 
 
+    List<SavedMessage> buffer=new List<SavedMessage>();
 
+    private void CheckBuffer()
+    {
+        if (PhoneManager.networkPower < 10)
+            return;
+
+        foreach (SavedMessage sm in buffer)
+        {
+            AddMessage(sm);
+        }
+
+        buffer.Clear();
+    }
 
     IEnumerator updateMessageList()
     {
@@ -108,4 +134,17 @@ public class ChatManager : MonoBehaviourPunCallbacks
         verticalLayoutGroup.enabled = true;
 
     }
+
+    private class SavedMessage
+    {
+        public string text;
+        public CharacterName owner;
+
+        public SavedMessage(string _text, CharacterName _owner)
+        {
+            text = _text;
+            owner = _owner;
+        }
+    }
+
 }
