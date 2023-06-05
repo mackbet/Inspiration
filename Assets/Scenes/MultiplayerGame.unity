@@ -5028,6 +5028,7 @@ GameObject:
   - component: {fileID: 1002590485}
   - component: {fileID: 1002590484}
   - component: {fileID: 1002590486}
+  - component: {fileID: 1002590487}
   m_Layer: 5
   m_Name: ChatApp
   m_TagString: Untagged
@@ -5112,6 +5113,28 @@ MonoBehaviour:
   MessagePrefab: {fileID: 5652469731047950766, guid: cdaaaa65d49d30f49b97d7b2b2735869, type: 3}
   ChatPage: {fileID: 677982196}
   verticalLayoutGroup: {fileID: 1365363260}
+--- !u!114 &1002590487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002590482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1012452047
 GameObject:
   m_ObjectHideFlags: 0
