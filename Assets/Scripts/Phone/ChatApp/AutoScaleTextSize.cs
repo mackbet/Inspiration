@@ -6,19 +6,36 @@ using TMPro;
 public class AutoScaleTextSize : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textComponent;
-    [SerializeField] private RectTransform rectTransform;
+
+    [SerializeField] private RectTransform verticalRectTransform;
+    [SerializeField] private RectTransform horizontalRectTransform;
+
+
+    [SerializeField] private Image background;
 
     public float maxWidth;
-    private void OnEnable()
+    private void Start()
     {
+        StartCoroutine(afterFrame());
+    }
 
-        maxWidth = rectTransform.rect.width;
+    IEnumerator afterFrame()
+    {
+        yield return new WaitForEndOfFrame();
 
+        maxWidth = verticalRectTransform.rect.width;
 
-        float preferredWidth = textComponent.preferredWidth;
-        float preferredHeight = textComponent.preferredHeight;
+        float preferredWidth = textComponent.preferredWidth+10;
+        float preferredHeight = textComponent.preferredHeight+10;
 
+        Debug.Log(preferredWidth);
+        Debug.Log(preferredHeight);
 
-        rectTransform.sizeDelta = new Vector2(Mathf.Clamp(preferredWidth + 20, 0, maxWidth), preferredHeight + 20);
+        horizontalRectTransform.sizeDelta = new Vector2(Mathf.Clamp(preferredWidth + 20, 0, maxWidth), preferredHeight + 20);
+
+        verticalRectTransform.sizeDelta = new Vector2(verticalRectTransform.sizeDelta.x, preferredHeight + 20);
+
+        background.enabled = true;
+
     }
 }

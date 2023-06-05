@@ -5,15 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class ChatManager : MonoBehaviour
+public class ChatManager : MonoBehaviourPunCallbacks
 {
     private CharacterName myCharacter;
-    private Dictionary<CharacterName, List<Message>> ChatHistory;
-    [SerializeField] private Message MessagePrefab;
     [SerializeField] private Transform container;
 
+    private Dictionary<CharacterName, List<Message>> ChatHistory = new Dictionary<CharacterName, List<Message>>();
+    [SerializeField] private Message MessagePrefab;
+    [SerializeField] private GameObject ChatPage;
+
+
+    [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
+
     private CharacterName selectedChat = CharacterName.None;
+    private Player selectedPlayer = null;
 
 
     private void Start()
@@ -25,6 +34,8 @@ public class ChatManager : MonoBehaviour
 
     public void OpenChat(ChatItem targetChat)
     {
+        ChatPage.SetActive(true);
+
         if (selectedChat!=CharacterName.None && !ChatHistory.ContainsKey(selectedChat))
         {
             List<Message> messages = ChatHistory[selectedChat];
@@ -36,6 +47,7 @@ public class ChatManager : MonoBehaviour
         }
 
         selectedChat = targetChat.Character;
+        selectedPlayer = targetChat.Player;
 
         if (!ChatHistory.ContainsKey(selectedChat))
         {
@@ -50,6 +62,7 @@ public class ChatManager : MonoBehaviour
                 message.gameObject.SetActive(false);
             }
         }
+
     }
 
     public void SendMessage(TMP_InputField inputField)
@@ -58,6 +71,33 @@ public class ChatManager : MonoBehaviour
 
         newMessage.SetMyMessage(inputField.text);
 
+        ChatHistory[selectedChat].Add(newMessage);
+
+        base.photonView.RPC("RPC_ChatMessage", selectedPlayer, inputField.text, myCharacter);
+
+
+        StartCoroutine(updateMessageList());
+    }
+    private void RPC_ChatMessage(string text, CharacterName owner)
+    {
+        Message newMessage = Instantiate(MessagePrefab, container);
+
+        newMessage.SetMyMessage(text);
+
+        ChatHistory[owner].Add(newMessage);
+
+        if (selectedChat != owner)
+            newMessage.gameObject.SetActive(false);
     }
 
+
+
+
+    IEnumerator updateMessageList()
+    {
+        verticalLayoutGroup.enabled = false;
+        yield return new WaitForEndOfFrame();
+        verticalLayoutGroup.enabled = true;
+
+    }
 }

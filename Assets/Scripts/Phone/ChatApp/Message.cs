@@ -6,8 +6,6 @@ public class Message : MonoBehaviour
 {
     [SerializeField] private RectTransform rect;
     [SerializeField] private TextMeshProUGUI textField;
-    [SerializeField] private CharacterName character;
-    [SerializeField] private bool owner;
 
     public void SetMyMessage(string text)
     {
@@ -18,7 +16,7 @@ public class Message : MonoBehaviour
     }
     public void Set—ompanionMessage(string text)
     {
-        rect.pivot = new Vector2(1, 0);
+        rect.pivot = new Vector2(0, 0);
         textField.text = text;
 
         gameObject.SetActive(true);

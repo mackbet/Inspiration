@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7c6c5ca74c3a14085ce3956e24ecc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 8613732028860484193}
+  image: {fileID: 1049761304}
   nameField: {fileID: 8613732029908025615}
   lastMessageField: {fileID: 8613732029992589566}
   button: {fileID: 8613732029638292200}

@@ -34,6 +34,7 @@ public class ChatItem : MonoBehaviour
 
         Character = (CharacterName)player.CustomProperties["CharacterName"];
 
+        Debug.Log(Character);
         image.sprite = images[images.ToList().FindIndex(x => x.name == Character)].characterSprite;
     }
 
