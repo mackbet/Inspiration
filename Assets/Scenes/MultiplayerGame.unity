@@ -1783,7 +1783,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -10}
+  m_SizeDelta: {x: -6.799713, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467067644
 MonoBehaviour:
@@ -3079,7 +3079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &677982197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5112,6 +5112,7 @@ MonoBehaviour:
   container: {fileID: 1365363258}
   MessagePrefab: {fileID: 5652469731047950766, guid: cdaaaa65d49d30f49b97d7b2b2735869, type: 3}
   ChatPage: {fileID: 677982196}
+  ChatTitle: {fileID: 1777094947}
   verticalLayoutGroup: {fileID: 1365363260}
 --- !u!114 &1002590487
 MonoBehaviour:
