@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 6895210003882408519}
   textField: {fileID: 1322614781810472298}
+  background: {fileID: 1322614780164892437}
 --- !u!1 &1322614781810472296
 GameObject:
   m_ObjectHideFlags: 0
