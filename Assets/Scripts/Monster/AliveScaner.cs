@@ -13,7 +13,7 @@ public class AliveScaner : MonoBehaviour
 
     [SerializeField] private LayerMask forestLayer;
 
-    [SerializeField] private MonsterTracker[] trackers;
+    [field: SerializeField] public MonsterTracker[] trackers { get; set; }
     [SerializeField] private Monster _monster;
 
     private void Start()
@@ -33,7 +33,7 @@ public class AliveScaner : MonoBehaviour
 
     private void CheckAlives()
     {
-        DrawGazeDirection();
+        //DrawGazeDirection();
 
         float minDistance = viewingRange;
         MonsterTracker selectedTarget = null;

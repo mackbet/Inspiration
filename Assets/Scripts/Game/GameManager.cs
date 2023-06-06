@@ -13,13 +13,15 @@ public class GameManager : MonoBehaviourPun
     private Monster _monster;
     [SerializeField] private Character _character;
 
+    public bool isPlayerAlive { get; private set; } = true;
+
     public UnityEvent onGameStarted;
 
     public Vector3 playerPos 
     { 
         get
         { 
-            return _character.GetPLayerPosition();
+            return _character.GetPlayerPosition();
         }
         private set { }
     }
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviourPun
     {
         ForestSpawner.instance.SpawnForest();
         _character = _spawner.SpawnPlayer();
+        _character.onDead.AddListener(() => isPlayerAlive = false);
         _character.onDestroyed.AddListener(NextCamera);
 
         PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;

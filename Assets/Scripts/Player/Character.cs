@@ -17,6 +17,7 @@ public class Character : MonoBehaviourPun
 
     private Player owner;
 
+    public UnityEvent onDead;
     public UnityEvent onDestroyed;
     private void Awake()
     {
@@ -78,6 +79,8 @@ public class Character : MonoBehaviourPun
     {
         Destroy(_movement);
         _characterAnimator.SetDeath();
+
+        onDead.Invoke();
     }
 
     private IEnumerator DestroyCharacter()
@@ -101,9 +104,9 @@ public class Character : MonoBehaviourPun
         }
     }
 
-    public Vector3 GetPLayerPosition()
+    public Vector3 GetPlayerPosition()
     {
-        return _monsterTracker.transform.position;
+        return _characterAnimator.transform.position;
     }
 }
 

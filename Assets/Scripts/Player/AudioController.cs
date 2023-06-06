@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AudioController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioClip[] stepSounds;
 
     [SerializeField] private AudioSource attackSound;
+    [SerializeField] private AudioSource crySound;
+
+    public UnityEvent<float> onSoundIsMade;
 
     private void Start()
     {
@@ -24,16 +28,17 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    public void StepSound()
+    public void StepSound(float volume)
     {
         foreach (AudioSource StepAudioSource in StepAudioSources)
         {
-           /* if (StepAudioSource.isPlaying)
-                continue;*/
-
             StepAudioSource.pitch = Random.Range(1.1f, 1.3f);
             StepAudioSource.clip = stepSounds[Random.Range(0, stepSounds.Length)];
             StepAudioSource.Play();
+
+            if(onSoundIsMade!=null)
+                onSoundIsMade.Invoke(volume);
+
             break;
         }
     }
@@ -42,6 +47,11 @@ public class AudioController : MonoBehaviour
     {
         attackSound.Play();
     }
+    public void Cry()
+    {
+        crySound.Play();
+    }
+
 
     public void SetSpatialBlend(SpatialBlend type)
     {

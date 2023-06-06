@@ -24,7 +24,13 @@ public class CharacterAnimator : MonoBehaviour
 
     public void SetDeath()
     {
+        /*Vector3 lastPos = animator.transform.position;
+        Debug.Log(lastPos);
         animator.transform.parent = null;
+
+        animator.transform.position = lastPos;*/
+
+
         animator.SetFloat("speed", 0);
         animator.SetBool("isDead", true);
         Destroy(this);

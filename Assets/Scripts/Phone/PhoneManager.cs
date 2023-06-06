@@ -47,6 +47,9 @@ public class PhoneManager : MonoBehaviour
     {
         while (true)
         {
+            if (!GM.isPlayerAlive)
+                break;
+
             Vector3 pos = GM.playerPos;
             Vector2Int index = ForestSpawner.GetIndexFromPosition(pos);
             networkPower = map[index.x, index.y];

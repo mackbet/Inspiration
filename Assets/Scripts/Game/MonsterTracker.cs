@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class MonsterTracker : MonoBehaviour
 {
     [field: SerializeField] public Transform[] tags { get; private set; }
+    [field: SerializeField] public AudioController audioController { get; private set; }
 
     public UnityEvent onTrackerCaptured;
     public void Dead()
