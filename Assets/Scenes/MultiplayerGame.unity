@@ -10632,7 +10632,7 @@ MonoBehaviour:
   surface: {fileID: 1932433450}
   <width>k__BackingField: 200
   <height>k__BackingField: 200
-  <pilarCount>k__BackingField: 5
+  <pilarCount>k__BackingField: 1
   objectPercentage: 0.04
   pilarPrefab:
     Name: Pilar
