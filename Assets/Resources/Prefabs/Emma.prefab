@@ -3158,7 +3158,7 @@ MonoBehaviour:
   sensitivity: 50
   maxYAngle: 50
   _camera: {fileID: 8307581783314644505}
-  <rotatorCamera>k__BackingField: {fileID: 0}
+  <rotatorCamera>k__BackingField: {fileID: 8307581782631181020}
 --- !u!114 &7186985092617788194
 MonoBehaviour:
   m_ObjectHideFlags: 0
