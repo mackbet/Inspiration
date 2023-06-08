@@ -91,6 +91,7 @@ public class ForestSpawner : MonoBehaviour
     }
     public static void MarkObjectRadius(EnvironmentObject obj, int radius)
     {
+        MonsterMap[obj.indices.x, obj.indices.y] = MonsterMapCell.obstacle;
         for (int i = -radius; i <= radius; i++)
         {
             for (int j = -radius; j <= radius; j++)
@@ -99,7 +100,9 @@ public class ForestSpawner : MonoBehaviour
                 if (isValidIndex(currentIndex) && Map[currentIndex.x, currentIndex.y]==null)
                 {
                     Map[currentIndex.x, currentIndex.y] = obj;
-                    MonsterMap[currentIndex.x, currentIndex.y] = MonsterMapCell.obstacle;
+
+                    if(obj.type!= ObjectType.Pilar)
+                        MonsterMap[currentIndex.x, currentIndex.y] = MonsterMapCell.obstacle;
 
                 }
             }

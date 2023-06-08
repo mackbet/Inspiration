@@ -42,14 +42,6 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-    IEnumerator SpawnMonster()
-    {
-        yield return new WaitForSeconds(delay);
-
-        Monster monster = Spawner.SpawnMonster(transform.position + Vector3.forward);
-
-        monster.GetComponent<Activator>().Activate();
-    }
 
     public void SendActivated(MonsterPilar pilar)
     {
@@ -76,5 +68,13 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
     private void RPC_SpawnMoster(Vector3 position)
     {
         StartCoroutine(SpawnMonster());
+    }
+    IEnumerator SpawnMonster()
+    {
+        yield return new WaitForSeconds(delay);
+
+        Monster monster = Spawner.SpawnMonster(transform.position + Vector3.forward);
+
+        monster.GetComponent<Activator>().Activate();
     }
 }
