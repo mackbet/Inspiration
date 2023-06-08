@@ -30,7 +30,7 @@ public class MosterPilar : Interaction
     }
     public void SendActivated()
     {
-        base.photonView.RPC("RPC_ChangeSeed", RpcTarget.All, transform.position);
+        base.photonView.RPC("RPC_MosterPilarActivated", RpcTarget.All, transform.position);
     }
 
     [PunRPC]
@@ -38,6 +38,7 @@ public class MosterPilar : Interaction
     {
         if (transform.position != position)
             return;
+
         SetOutline(false);
         isActivated = true;
 
