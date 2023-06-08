@@ -10642,6 +10642,7 @@ GameObject:
   - component: {fileID: 1932433448}
   - component: {fileID: 1932433451}
   - component: {fileID: 1932433450}
+  - component: {fileID: 1932433452}
   m_Layer: 0
   m_Name: ForestSpawner
   m_TagString: Untagged
@@ -10774,6 +10775,29 @@ MonoBehaviour:
     - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
   <pilarCount>k__BackingField: 5
   container: {fileID: 479069592}
+  delay: 3
+--- !u!114 &1932433452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932433447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1951196486
 GameObject:
   m_ObjectHideFlags: 0
