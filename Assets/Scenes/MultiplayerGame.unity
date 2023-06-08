@@ -10695,7 +10695,7 @@ MonoBehaviour:
     - {fileID: 5457682034327994965, guid: 2fb21ce5a03c15148ab4147f19f3b538, type: 3}
     - {fileID: 5457682034327994965, guid: ad416b36e3373254cab7c2bd47cf793e, type: 3}
   container: {fileID: 977131966}
-  <audio>k__BackingField: {fileID: 2020791790}
+  <forestAudio>k__BackingField: {fileID: 0}
   wallContainer: {fileID: 0}
   walls:
   - {fileID: 6717484478892634406, guid: 76e0438fcaa98e7458b3963831119837, type: 3}
@@ -10769,8 +10769,8 @@ MonoBehaviour:
   pilarPrefab:
     Name: MonsterPilar
     <type>k__BackingField: 4
-    <radius>k__BackingField: 10
-    <weight>k__BackingField: 0
+    <radius>k__BackingField: 8
+    <weight>k__BackingField: 10
     <models>k__BackingField:
     - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
   <pilarCount>k__BackingField: 5

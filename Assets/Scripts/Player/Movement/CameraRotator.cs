@@ -6,7 +6,7 @@ public class CameraRotator : MonoBehaviour
     public float maxYAngle = 80f;
     [SerializeField] private Transform _camera;
 
-    [field: SerializeField] public Camera camera { get; private set; }
+    [field: SerializeField] public Camera rotatorCamera { get; private set; }
 
     private float rotationY = 0f;
     private float rotationX = 0f;

@@ -32,7 +32,7 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
         {
             sButton.button.DisableOutline();
         }
-        Spawner.name = CharacterName.None;
+        Spawner.Name = CharacterName.None;
 
         _myCustomProperties["CharacterName"] = CharacterName.None;
         PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);
@@ -50,7 +50,7 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
             _selectedUIButton.DisableOutline();
             _selectedUIButton = null;
 
-            Spawner.name = CharacterName.None;
+            Spawner.Name = CharacterName.None;
 
             _myCustomProperties["CharacterName"] = CharacterName.None;
             PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);
@@ -66,7 +66,7 @@ public class CharacterSelection : MonoBehaviourPunCallbacks
             _selectedUIButton = sButton.button;
             _selectedUIButton.EnableOutline();
 
-            Spawner.name = sButton.name;
+            Spawner.Name = sButton.name;
 
             _myCustomProperties["CharacterName"] = sButton.name;
             PhotonNetwork.LocalPlayer.SetCustomProperties(_myCustomProperties);

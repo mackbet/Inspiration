@@ -43,7 +43,7 @@ public class Monster : MonoBehaviour
 
     private void Initialize()
     {
-        map = ForestSpawner.instance.MonsterMap;
+        map = ForestSpawner.MonsterMap;
     }
 
     private void FixedUpdate()

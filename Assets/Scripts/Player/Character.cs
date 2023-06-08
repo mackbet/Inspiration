@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class Character : MonoBehaviourPun
 {
 
-    [field:SerializeField] public CharacterName name { get; private set; }
+    [field:SerializeField] public CharacterName Name { get; private set; }
     [SerializeField] private Movement _movement;
     [SerializeField] private AudioController _audioController;
     [SerializeField] private CharacterAnimator _characterAnimator;
@@ -27,7 +27,7 @@ public class Character : MonoBehaviourPun
             Destroy(_movement);
             Destroy(_interact);
             cameraRotator.enabled = false;
-            cameraRotator.camera.gameObject.SetActive(false);
+            cameraRotator.rotatorCamera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
         }
@@ -101,7 +101,7 @@ public class Character : MonoBehaviourPun
     {
         if (!photonView.IsMine)
         {
-            cameraRotator.camera.gameObject.SetActive(true);
+            cameraRotator.rotatorCamera.gameObject.SetActive(true);
         }
     }
 

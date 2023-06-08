@@ -19,15 +19,14 @@ public class ForestSpawner : MonoBehaviour
 
     [SerializeField] private Transform container;
 
-    [field:SerializeField] public ForestAudio audio { get; private set; }
-    public EnvironmentObject[,] Map { get; private set; }
-    public MonsterMapCell[,] MonsterMap { get; private set; }
+    [field:SerializeField] public ForestAudio forestAudio { get; private set; }
+    public static EnvironmentObject[,] Map { get; private set; }
+    public static MonsterMapCell[,] MonsterMap { get; private set; }
     public Dictionary<ObjectType, List<EnvironmentObject>> objectDictionary;
 
     [SerializeField] private Transform wallContainer;
     public GameObject[] walls;
     public int step;
-
 
     private int scale = 1;
     private int totalWeight = 0;
@@ -63,8 +62,11 @@ public class ForestSpawner : MonoBehaviour
         {
             for (int j = 0; j < height * scale + 1; j++)
             {
-                if (!isValidIndex(new Vector2Int(i, j)) || (Map[i, j]!=null && Map[i,j].type == ObjectType.Pilar))
+                if (!isValidIndex(new Vector2Int(i, j)) || (Map[i, j] != null && Map[i, j].type == ObjectType.Pilar))
+                {
+                    Debug.Log("Pilar");
                     continue;
+                }
 
                 int isEnvObject = RandomHelper.GetRandomInt(0, 100);
                 if (isEnvObject < objectPercentage * 100)
@@ -87,17 +89,18 @@ public class ForestSpawner : MonoBehaviour
 
         BakeNavMesh();
     }
-    public void MarkObjectRadius(EnvironmentObject obj, int radius)
+    public static void MarkObjectRadius(EnvironmentObject obj, int radius)
     {
         for (int i = -radius; i <= radius; i++)
         {
             for (int j = -radius; j <= radius; j++)
             {
                 Vector2Int currentIndex = obj.indices + new Vector2Int(i, j);
-                if (isValidIndex(currentIndex))
+                if (isValidIndex(currentIndex) && Map[currentIndex.x, currentIndex.y]==null)
                 {
                     Map[currentIndex.x, currentIndex.y] = obj;
                     MonsterMap[currentIndex.x, currentIndex.y] = MonsterMapCell.obstacle;
+
                 }
             }
         }

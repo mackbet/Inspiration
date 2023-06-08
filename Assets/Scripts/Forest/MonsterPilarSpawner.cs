@@ -5,14 +5,15 @@ using Photon.Pun;
 
 public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
 {
+    public static MonsterPilarSpawner instance;
     [SerializeField] private EnvironmentObjectPrefab pilarPrefab;
     [field: SerializeField] public int pilarCount { get; private set; }
     [SerializeField] Transform container;
 
     [SerializeField] private float delay;
-    private void Start()
+    private void Awake()
     {
-        SpawnPilars();
+        instance = this;
     }
 
     private List<MonsterPilar> pilars = new List<MonsterPilar>();
@@ -23,12 +24,15 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
         {
             Vector2Int pos = new Vector2Int(RandomHelper.GetRandomInt(5, ForestSpawner.instance.width - 5), RandomHelper.GetRandomInt(5, ForestSpawner.instance.height - 5));
 
-            if (ForestSpawner.instance.Map[pos.x, pos.y] == null)
+            if (ForestSpawner.Map[pos.x, pos.y] == null)
             {
                 GameObject newGO = Instantiate(pilarPrefab.models[0], ForestSpawner.GetPositionFromIndex(pos), Quaternion.identity, container);
 
-                ForestSpawner.instance.Map[pos.x, pos.y] = new EnvironmentObject(pilarPrefab, newGO, pos);
-                ForestSpawner.instance.MarkObjectRadius(ForestSpawner.instance.Map[pos.x, pos.y], pilarPrefab.radius);
+                ForestSpawner.Map[pos.x, pos.y] = new EnvironmentObject(pilarPrefab, newGO, pos);
+
+                Debug.Log(pilarPrefab.radius);
+
+                ForestSpawner.MarkObjectRadius(ForestSpawner.Map[pos.x, pos.y], pilarPrefab.radius);
 
                 MonsterPilar pilar = newGO.GetComponent<MonsterPilar>();
                 pilar.onPilarActivated.AddListener(() => SendActivated(pilar));

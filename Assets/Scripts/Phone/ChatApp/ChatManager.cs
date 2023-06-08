@@ -6,8 +6,6 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Photon.Pun;
-using Photon.Realtime;
 using UnityEngine.Events;
 
 public class ChatManager : MonoBehaviourPunCallbacks

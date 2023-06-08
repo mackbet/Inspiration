@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviourPun
 
     private void Start()
     {
+        MonsterPilarSpawner.instance.SpawnPilars();
         ForestSpawner.instance.SpawnForest();
         _character = Spawner.SpawnPlayer();
         _character.onDead.AddListener(() => isPlayerAlive = false);
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviourPun
     }
     private void StartGame()
     {
-        ForestSpawner.instance.audio.PlaySounds();
+        ForestSpawner.instance.forestAudio.PlaySounds();
         _character.GetComponent<Activator>().Activate();
 
         if (PhotonNetwork.IsMasterClient)

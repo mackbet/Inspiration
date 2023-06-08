@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class Spawner : MonoBehaviour
 {
     public static Spawner instance;
-    public static CharacterName name;
+    public static CharacterName Name;
     [SerializeField] private List<Character> _characterPrefabs;
 
     [SerializeField] private Monster _monsterPrefab;
@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
 
     public static Character SpawnPlayer()
     {
-        GameObject newCharacter = instance._characterPrefabs[instance._characterPrefabs.FindIndex(x => x.name == name)].gameObject;
+        GameObject newCharacter = instance._characterPrefabs[instance._characterPrefabs.FindIndex(x => x.Name == Name)].gameObject;
         while (true)
         {
             Vector3 position = ForestSpawner.GetRandomPosition(false);
