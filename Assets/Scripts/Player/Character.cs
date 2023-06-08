@@ -14,6 +14,7 @@ public class Character : MonoBehaviourPun
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private CameraRotator cameraRotator;
     [SerializeField] private MonsterTracker _monsterTracker;
+    [SerializeField] private Interact _interact;
 
     private Player owner;
 
@@ -28,7 +29,7 @@ public class Character : MonoBehaviourPun
             cameraRotator.camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
-
+            _interact.enabled = false;
         }
 
         if (PhotonNetwork.IsMasterClient)

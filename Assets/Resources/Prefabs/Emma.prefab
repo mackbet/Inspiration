@@ -2973,6 +2973,7 @@ MonoBehaviour:
   _characterAnimator: {fileID: 8307581782941454257}
   cameraRotator: {fileID: 8307581783314644504}
   _monsterTracker: {fileID: 6373061514341460012}
+  _interact: {fileID: 5537662465102748734}
   onDead:
     m_PersistentCalls:
       m_Calls: []

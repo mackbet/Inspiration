@@ -3156,6 +3156,7 @@ MonoBehaviour:
   _characterAnimator: {fileID: 8307581782941454257}
   cameraRotator: {fileID: 8307581783314644504}
   _monsterTracker: {fileID: 6373061514341460012}
+  _interact: {fileID: 5213355306984602685}
   onDead:
     m_PersistentCalls:
       m_Calls: []

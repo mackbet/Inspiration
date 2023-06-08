@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interact : MonoBehaviour
 {
     private Interaction target;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Interaction interaction))

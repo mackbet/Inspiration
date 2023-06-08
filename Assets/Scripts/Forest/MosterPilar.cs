@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,11 +17,7 @@ public class MosterPilar : Interaction
         if (isActivated)
             return;
 
-        SetOutline(false);
-        isActivated = true;
-
-        onPilarActivated.Invoke();
-        StartCoroutine(SpawnMonster());
+        SendActivated();
     }
 
     IEnumerator SpawnMonster()
@@ -30,5 +27,25 @@ public class MosterPilar : Interaction
         Monster monster =  Spawner.SpawnMonster(transform.position + Vector3.forward);
 
         monster.GetComponent<Activator>().Activate();
+    }
+    public void SendActivated()
+    {
+        base.photonView.RPC("RPC_ChangeSeed", RpcTarget.All, transform.position);
+    }
+
+    [PunRPC]
+    private void RPC_MosterPilarActivated(Vector3 position)
+    {
+        if (transform.position != position)
+            return;
+        SetOutline(false);
+        isActivated = true;
+
+        onPilarActivated.Invoke();
+
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        StartCoroutine(SpawnMonster());
     }
 }
