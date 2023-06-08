@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private bool cycledForest;
 
+    public UnityEvent onCrouch;
+    public UnityEvent onStand;
+
 
     public Action<Vector3> onMoving;
     public Action<MovementState> onStateChanged;
@@ -86,13 +89,18 @@ public class Movement : MonoBehaviour
             _movementState = MovementState.crouching;
 
             moveSpeed = crouchSpeed;
+
+            onCrouch.Invoke();
         }
         else if (_movementState == MovementState.crouching)
         {
             _movementState = MovementState.standing;
 
             moveSpeed = standSpeed;
+
+            onStand.Invoke();
         }
+
 
         onStateChanged.Invoke(_movementState);
     }

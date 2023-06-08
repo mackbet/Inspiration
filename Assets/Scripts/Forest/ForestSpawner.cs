@@ -64,7 +64,6 @@ public class ForestSpawner : MonoBehaviour
             {
                 if (!isValidIndex(new Vector2Int(i, j)) || (Map[i, j] != null && Map[i, j].type == ObjectType.Pilar))
                 {
-                    Debug.Log("Pilar");
                     continue;
                 }
 

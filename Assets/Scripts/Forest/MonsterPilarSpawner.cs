@@ -30,8 +30,6 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
 
                 ForestSpawner.Map[pos.x, pos.y] = new EnvironmentObject(pilarPrefab, newGO, pos);
 
-                Debug.Log(pilarPrefab.radius);
-
                 ForestSpawner.MarkObjectRadius(ForestSpawner.Map[pos.x, pos.y], pilarPrefab.radius);
 
                 MonsterPilar pilar = newGO.GetComponent<MonsterPilar>();
@@ -67,13 +65,13 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_SpawnMoster(Vector3 position)
     {
-        StartCoroutine(SpawnMonster());
+        StartCoroutine(SpawnMonster(position));
     }
-    IEnumerator SpawnMonster()
+    IEnumerator SpawnMonster(Vector3 position)
     {
         yield return new WaitForSeconds(delay);
 
-        Monster monster = Spawner.SpawnMonster(transform.position + Vector3.forward);
+        Monster monster = Spawner.SpawnMonster(position + Vector3.forward);
 
         monster.GetComponent<Activator>().Activate();
     }

@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 9049036401387552922}
   - component: {fileID: 5746090466752597935}
   - component: {fileID: 456410770789835629}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Tag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,6 +619,37 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.14441597, y: 0.8732745, z: -0.043704964}
     m_Extent: {x: 0.20644554, y: 0.17100698, z: 0.17934343}
   m_DirtyAABB: 0
+--- !u!1 &2158545261598133721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4210538765858350254}
+  m_Layer: 0
+  m_Name: CameraTargetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4210538765858350254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158545261598133721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8307581783339579260}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2429696803624253295
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697114252707483802}
   - component: {fileID: 79360572959586120}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Steps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1190,7 +1221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227436395556679634}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1243,7 @@ Transform:
   - {fileID: 3697114252707483802}
   - {fileID: 7002026566560525176}
   m_Father: {fileID: 8307581783339579260}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3979914154892393288
 GameObject:
@@ -1672,7 +1703,7 @@ GameObject:
   - component: {fileID: 5446680586305583231}
   - component: {fileID: 6443583342665350912}
   - component: {fileID: 6143009855049669262}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1897,7 +1928,7 @@ GameObject:
   - component: {fileID: 6635618889861173558}
   - component: {fileID: 5399375609527525278}
   - component: {fileID: 1230568750996913527}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Tag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2235,7 +2266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7002026566560525176}
   - component: {fileID: 6680300390890643049}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2815,7 +2846,7 @@ GameObject:
   - component: {fileID: 8307581782631181021}
   - component: {fileID: 6592648000860930475}
   - component: {fileID: 2967275879434888475}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2830,7 +2861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8307581782631181022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2868,7 +2899,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2931,8 +2962,9 @@ GameObject:
   - component: {fileID: 8307581782941454270}
   - component: {fileID: 8307581782941454257}
   - component: {fileID: 8307581782941454256}
+  - component: {fileID: 6114814833216424050}
   - component: {fileID: 9037357335580951899}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Emma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3053,6 +3085,36 @@ MonoBehaviour:
   crouchSpeed: 2
   crouchKey: 99
   cycledForest: 1
+  onCrouch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4851553660952174304}
+        m_TargetAssemblyTypeName: LerpMove, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStand:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4851553660952174304}
+        m_TargetAssemblyTypeName: LerpMove, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _movementState: 1
 --- !u!114 &8307581782941454257
 MonoBehaviour:
@@ -3083,6 +3145,26 @@ MonoBehaviour:
   _movement: {fileID: 8307581782941454270}
   model: {fileID: 4674085013597381323}
   speed: 15
+--- !u!114 &6114814833216424050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581782941454260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5356d51349058c441b94cffcb1fd33d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 8414024878815251354}
+  - {fileID: 3828107860520791238}
+  - {fileID: 1177965263375957211}
+  - {fileID: 4519098349570457158}
+  - {fileID: 1854168807429463180}
+  - {fileID: 7694983281501768870}
+  targetLayer: PlayerModel
 --- !u!114 &9037357335580951899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3120,7 +3202,8 @@ GameObject:
   - component: {fileID: 8307581783314644505}
   - component: {fileID: 8307581783314644504}
   - component: {fileID: 7186985092617788194}
-  m_Layer: 3
+  - component: {fileID: 4851553660952174304}
+  m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3135,7 +3218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8307581783314644506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3175,6 +3258,21 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &4851553660952174304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581783314644506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b332ca695bd9946800332205a021da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 8307581783314644505}
+  targetTransform: {fileID: 4210538765858350254}
+  duration: 0.2
 --- !u!1 &8307581783339579261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3288,7 @@ GameObject:
   - component: {fileID: 4930184829893092462}
   - component: {fileID: 5537662465102748734}
   - component: {fileID: 5834620855095112802}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -3211,6 +3309,7 @@ Transform:
   m_Children:
   - {fileID: 4674085013597381323}
   - {fileID: 8307581783314644505}
+  - {fileID: 4210538765858350254}
   - {fileID: 1227436395556679634}
   m_Father: {fileID: 8307581782941454259}
   m_RootOrder: 0
@@ -3717,7 +3816,7 @@ GameObject:
   - component: {fileID: 6016299415656095287}
   - component: {fileID: 4534779609646531003}
   - component: {fileID: 8463898157080135160}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Tag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
