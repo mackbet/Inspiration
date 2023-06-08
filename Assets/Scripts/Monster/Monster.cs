@@ -112,7 +112,8 @@ public class Monster : MonoBehaviour
     {
         Vector2Int currentIndex = ForestSpawner.GetIndexFromPosition(transform.position);
 
-        transform.position = ForestSpawner.GetPositionFromIndex(ChooseCell(currentIndex, 1));
+        if(map[currentIndex.x, currentIndex.y]!= MonsterMapCell.empty)
+            transform.position = ForestSpawner.GetPositionFromIndex(ChooseCell(currentIndex, 1));
     }
 
 
