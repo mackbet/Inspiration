@@ -2047,6 +2047,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatManager: {fileID: 1002590486}
   notificationAudio: {fileID: 487502003}
+--- !u!1 &479069591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 479069592}
+  m_Layer: 0
+  m_Name: MonsterPilarContainer (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479069592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479069591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1932433449}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487502001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4699,7 +4730,7 @@ Transform:
   - {fileID: 1798436927}
   - {fileID: 1226879800}
   m_Father: {fileID: 1932433449}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960285553
 GameObject:
@@ -10609,6 +10640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932433449}
   - component: {fileID: 1932433448}
+  - component: {fileID: 1932433451}
   - component: {fileID: 1932433450}
   m_Layer: 0
   m_Name: ForestSpawner
@@ -10632,15 +10664,7 @@ MonoBehaviour:
   surface: {fileID: 1932433450}
   <width>k__BackingField: 200
   <height>k__BackingField: 200
-  <pilarCount>k__BackingField: 1
   objectPercentage: 0.04
-  pilarPrefab:
-    Name: Pilar
-    <type>k__BackingField: 4
-    <radius>k__BackingField: 10
-    <weight>k__BackingField: 0
-    <models>k__BackingField:
-    - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
   eObjectPrefabs:
   - Name: Tree
     <type>k__BackingField: 0
@@ -10692,6 +10716,7 @@ Transform:
   m_Children:
   - {fileID: 1248057024}
   - {fileID: 977131966}
+  - {fileID: 479069592}
   - {fileID: 959876517}
   - {fileID: 2020791789}
   - {fileID: 741000253}
@@ -10728,6 +10753,27 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
+--- !u!114 &1932433451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932433447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9767d7c3a589a54793c8d8cbc368c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilarPrefab:
+    Name: MonsterPilar
+    <type>k__BackingField: 4
+    <radius>k__BackingField: 10
+    <weight>k__BackingField: 0
+    <models>k__BackingField:
+    - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
+  <pilarCount>k__BackingField: 5
+  container: {fileID: 479069592}
 --- !u!1 &1951196486
 GameObject:
   m_ObjectHideFlags: 0
@@ -11205,7 +11251,7 @@ Transform:
   - {fileID: 1643345091}
   - {fileID: 124384425}
   m_Father: {fileID: 1932433449}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2020791790
 MonoBehaviour:

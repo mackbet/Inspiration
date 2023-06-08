@@ -1,7 +1,6 @@
 using UnityEngine;
-using Photon.Pun;
 
-public class Interaction : MonoBehaviourPunCallbacks
+public class Interaction : MonoBehaviour
 {
     [SerializeField] private Outline outline;
     [SerializeField] protected bool isActivated;
