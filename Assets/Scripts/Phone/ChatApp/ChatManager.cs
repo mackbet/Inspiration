@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.Events;
 
 public class ChatManager : MonoBehaviourPunCallbacks
 {
@@ -25,7 +26,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
     private CharacterName selectedChat = CharacterName.None;
     private Player selectedPlayer = null;
 
-
+    public UnityEvent onGotMessage;
     private void Start()
     {
         PhoneManager.instance.onNetworkPowerChanged.AddListener(CheckBuffer);
@@ -126,6 +127,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
         }
 
         buffer.Clear();
+        onGotMessage.Invoke();
     }
 
     IEnumerator updateMessageList()

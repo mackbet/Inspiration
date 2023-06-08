@@ -11,11 +11,12 @@ public class ForestSpawner : MonoBehaviour
     [SerializeField] private NavMeshSurface surface;
     [field: SerializeField] public int width { get; private set; }
     [field: SerializeField] public int height { get; private set; }
-
+    [field: SerializeField] public int pilarCount { get; private set; }
 
     [Range(0f, 0.1f)]
     [SerializeField] private float objectPercentage;
 
+    [SerializeField] private EnvironmentObjectPrefab pilarPrefab;
     [SerializeField] private EnvironmentObjectPrefab[] eObjectPrefabs;
 
     [SerializeField] private Transform container;
@@ -38,6 +39,7 @@ public class ForestSpawner : MonoBehaviour
         instance = this;
 
         Initialize();
+        SpawnPilars();
     }
 
     private void Initialize()
@@ -56,6 +58,26 @@ public class ForestSpawner : MonoBehaviour
                 objectDictionary.Add(eObj.type, new List<EnvironmentObject>());
         }
     }
+    public void SpawnPilars()
+    {
+        int count = 0;
+        while (count < pilarCount)
+        {
+            Vector2Int pos = new Vector2Int(RandomHelper.GetRandomInt(5, width - 5), RandomHelper.GetRandomInt(5, height - 5));
+
+            if (Map[pos.x,pos.y]==null)
+            {
+                GameObject newGO = Instantiate(pilarPrefab.models[0], GetPositionFromIndex(pos), Quaternion.identity, container);
+
+                Map[pos.x, pos.y] = new EnvironmentObject(pilarPrefab, newGO, pos);
+                MarkObjectRadius(Map[pos.x, pos.y], pilarPrefab.radius);
+
+                count++;
+            }
+            Debug.Log("dsadasd");
+        }
+        Debug.Log("11111");
+    }
 
     public void SpawnForest()
     {
@@ -63,7 +85,7 @@ public class ForestSpawner : MonoBehaviour
         {
             for (int j = 0; j < height * scale + 1; j++)
             {
-                if (!isValidIndex(new Vector2Int(i, j)))
+                if (!isValidIndex(new Vector2Int(i, j)) || (Map[i, j]!=null && Map[i,j].type == ObjectType.Pilar))
                     continue;
 
                 int isEnvObject = RandomHelper.GetRandomInt(0, 100);

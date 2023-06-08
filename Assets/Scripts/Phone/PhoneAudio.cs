@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PhoneAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private ChatManager chatManager;
+    [SerializeField] private AudioSource notificationAudio;
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        chatManager.onGotMessage.AddListener(PlayNotificationSound);
+    }
+    private void PlayNotificationSound()
+    {
+        notificationAudio.Play();
     }
 }

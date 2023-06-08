@@ -36,6 +36,7 @@ public enum ObjectType
     Bush,
     Rock,
     BigRock,
+    Pilar,
 }
 
 public class Alive

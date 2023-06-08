@@ -9,7 +9,6 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviourPun
 {
-    [SerializeField] Spawner _spawner;
     private Monster _monster;
     [SerializeField] private Character _character;
 
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviourPun
     private void Start()
     {
         ForestSpawner.instance.SpawnForest();
-        _character = _spawner.SpawnPlayer();
+        _character = Spawner.SpawnPlayer();
         _character.onDead.AddListener(() => isPlayerAlive = false);
         _character.onDestroyed.AddListener(NextCamera);
 
@@ -53,7 +52,7 @@ public class GameManager : MonoBehaviourPun
 
         if (PhotonNetwork.IsMasterClient)
         {
-            _monster = _spawner.SpawnMonster();
+            _monster = Spawner.SpawnMonster(Vector3.zero);
             _monster.GetComponent<Activator>().Activate();
         }
 

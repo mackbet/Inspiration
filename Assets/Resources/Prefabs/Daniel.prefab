@@ -3370,6 +3370,8 @@ GameObject:
   - component: {fileID: 8307581783339579258}
   - component: {fileID: 6373061514341460012}
   - component: {fileID: 4930184829893092462}
+  - component: {fileID: 5213355306984602685}
+  - component: {fileID: 7448947392364191948}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -3461,6 +3463,47 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5213355306984602685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581783339579261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fb4fccf2ff6ce46bea35319e24742a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7448947392364191948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581783339579261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1856d84b11cb084fa6a4bb82210e403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyBoardButtons:
+  - <keyCode>k__BackingField: 102
+    onKeyDown:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5213355306984602685}
+          m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+          m_MethodName: TryToInteract
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8466421073705383721
 GameObject:
   m_ObjectHideFlags: 0
