@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9e1a96f835f884fb93f2f92f8f26d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <name>k__BackingField: 1
+  <Name>k__BackingField: 1
   _movement: {fileID: 8307581782941454270}
   _audioController: {fileID: 5446680586305583231}
   _characterAnimator: {fileID: 8307581782941454257}
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   sensitivity: 50
   maxYAngle: 50
   _camera: {fileID: 8307581783314644505}
-  <camera>k__BackingField: {fileID: 8307581782631181020}
+  <rotatorCamera>k__BackingField: {fileID: 0}
 --- !u!114 &6992267781657588426
 MonoBehaviour:
   m_ObjectHideFlags: 0
