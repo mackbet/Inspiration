@@ -55,7 +55,7 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
     {
         base.photonView.RPC("RPC_MosterPilarActivated", RpcTarget.Others, pilar.transform.position);
 
-        base.photonView.RPC("RPC_MosterPilarActivated", RpcTarget.MasterClient, pilar.transform.position);
+        base.photonView.RPC("RPC_SpawnMoster", RpcTarget.MasterClient, pilar.transform.position);
     }
 
     [PunRPC]
