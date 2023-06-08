@@ -25,11 +25,11 @@ public class Character : MonoBehaviourPun
         if (!photonView.IsMine)
         {
             Destroy(_movement);
+            Destroy(_interact);
             cameraRotator.enabled = false;
             cameraRotator.camera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
-            _interact.enabled = false;
         }
 
         if (PhotonNetwork.IsMasterClient)
