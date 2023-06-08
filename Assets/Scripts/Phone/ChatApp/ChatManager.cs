@@ -96,6 +96,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
         else
         {
             buffer.Add(newSM);
+            onGotMessage.Invoke();
         }
     }
 
@@ -127,7 +128,6 @@ public class ChatManager : MonoBehaviourPunCallbacks
         }
 
         buffer.Clear();
-        onGotMessage.Invoke();
     }
 
     IEnumerator updateMessageList()
