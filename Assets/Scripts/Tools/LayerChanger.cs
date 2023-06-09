@@ -13,7 +13,6 @@ public class LayerChanger : MonoBehaviourPun
         {
             foreach(GameObject go in objects)
             {
-                Debug.Log(LayerMask.NameToLayer(targetLayer));
                 go.layer = LayerMask.NameToLayer(targetLayer);
 
             }

@@ -17,5 +17,9 @@ public class MonsterPilar : Interaction
         SetOutline(false);
         isActivated = true;
         onPilarActivated.Invoke();
+
+        MonsterPilarSpawner.activatedPilarCount++;
+        if (MonsterPilarSpawner.activatedPilarCount == MonsterPilarSpawner.instance.pilarCount)
+            MonsterPilarSpawner.instance.onPilarsActivated.Invoke();
     }
 }

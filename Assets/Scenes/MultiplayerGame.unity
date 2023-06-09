@@ -9614,7 +9614,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.15
+  m_fontSize: 32.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10641,6 +10641,7 @@ GameObject:
   - component: {fileID: 1932433449}
   - component: {fileID: 1932433448}
   - component: {fileID: 1932433451}
+  - component: {fileID: 1932433453}
   - component: {fileID: 1932433450}
   - component: {fileID: 1932433452}
   m_Layer: 0
@@ -10774,6 +10775,21 @@ MonoBehaviour:
     <models>k__BackingField:
     - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
   <pilarCount>k__BackingField: 5
+  onPilarsActivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932433447}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   container: {fileID: 479069592}
   delay: 3
 --- !u!114 &1932433452
@@ -10798,6 +10814,19 @@ MonoBehaviour:
   sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1932433453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932433447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3089610ce43064cbc2b7b004db9d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalPrefab: {fileID: 584952295894727832, guid: 81f32910f6d3a9b4597058d7f6283cc4, type: 3}
 --- !u!1 &1951196486
 GameObject:
   m_ObjectHideFlags: 0
@@ -11792,7 +11821,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.15
+  m_fontSize: 32.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

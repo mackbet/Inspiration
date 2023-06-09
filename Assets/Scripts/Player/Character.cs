@@ -73,6 +73,7 @@ public class Character : MonoBehaviourPun
         {
             Dead();
             StartCoroutine(DestroyCharacter());
+            GameManager.playersAlive--;
         }
     }
 

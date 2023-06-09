@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Events;
 
 public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
 {
     public static MonsterPilarSpawner instance;
     [SerializeField] private EnvironmentObjectPrefab pilarPrefab;
     [field: SerializeField] public int pilarCount { get; private set; }
+    public static int activatedPilarCount { get; set; } = 0;
+    public UnityEvent onPilarsActivated;
+
     [SerializeField] Transform container;
 
     [SerializeField] private float delay;

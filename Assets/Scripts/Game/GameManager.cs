@@ -9,9 +9,10 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviourPun
 {
+    public static int playersAlive;
+
     private Monster _monster;
     [SerializeField] private Character _character;
-
     public bool isPlayerAlive { get; private set; } = true;
 
     public UnityEvent onGameStarted;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviourPun
             _monster.GetComponent<Activator>().Activate();
         }
 
+        playersAlive = PhotonNetwork.CurrentRoom.PlayerCount;
         onGameStarted.Invoke();
     }
 
