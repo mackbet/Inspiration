@@ -11,6 +11,7 @@ public class MonsterPilar : Interaction
     public UnityEvent onPilarActivated;
     public override void Activate()
     {
+        Debug.Log("Activate");
         if (isActivated)
             return;
 

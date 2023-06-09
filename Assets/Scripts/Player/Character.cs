@@ -14,6 +14,7 @@ public class Character : MonoBehaviourPun
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private CameraRotator cameraRotator;
     [SerializeField] private MonsterTracker _monsterTracker;
+    [SerializeField] private LayerChanger _layerChanger;
     [SerializeField] private Interact _interact;
 
     private Player owner;
@@ -30,6 +31,10 @@ public class Character : MonoBehaviourPun
             cameraRotator.rotatorCamera.gameObject.SetActive(false);
 
             _audioController.SetSpatialBlend(SpatialBlend.Sounds3D);
+        }
+        else
+        {
+            _layerChanger.ChangeLayer();
         }
 
         if (PhotonNetwork.IsMasterClient)
@@ -103,6 +108,7 @@ public class Character : MonoBehaviourPun
         if (!photonView.IsMine)
         {
             cameraRotator.rotatorCamera.gameObject.SetActive(true);
+            _layerChanger.ChangeLayer();
         }
     }
 

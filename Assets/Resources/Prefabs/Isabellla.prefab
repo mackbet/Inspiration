@@ -3368,6 +3368,7 @@ MonoBehaviour:
   _characterAnimator: {fileID: 8307581782941454257}
   cameraRotator: {fileID: 8307581783314644504}
   _monsterTracker: {fileID: 6373061514341460012}
+  _layerChanger: {fileID: 2260370628186565994}
   _interact: {fileID: 8151195142457934102}
   onDead:
     m_PersistentCalls:
@@ -3383,7 +3384,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   onDestroyed:
     m_PersistentCalls:
       m_Calls: []

@@ -9,7 +9,8 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
     public static MonsterPilarSpawner instance;
     [SerializeField] private EnvironmentObjectPrefab pilarPrefab;
     [field: SerializeField] public int pilarCount { get; private set; }
-    public static int activatedPilarCount { get; set; } = 0;
+
+    public static int activatedPilarCount = 0;
     public UnityEvent onPilarsActivated;
 
     [SerializeField] Transform container;

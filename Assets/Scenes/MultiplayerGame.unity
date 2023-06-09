@@ -10774,14 +10774,14 @@ MonoBehaviour:
     <weight>k__BackingField: 10
     <models>k__BackingField:
     - {fileID: 4765137831383455163, guid: f52959e94eee6554e8ed3ed4b9006938, type: 3}
-  <pilarCount>k__BackingField: 5
+  <pilarCount>k__BackingField: 1
   onPilarsActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932433447}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1932433453}
+        m_TargetAssemblyTypeName: PortalSpawner, Assembly-CSharp
+        m_MethodName: ActivatePortal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -7,15 +7,12 @@ public class LayerChanger : MonoBehaviourPun
 {
     [SerializeField] GameObject[] objects;
     [SerializeField] string targetLayer;
-    void Start()
-    {
-        if (photonView.IsMine)
-        {
-            foreach(GameObject go in objects)
-            {
-                go.layer = LayerMask.NameToLayer(targetLayer);
 
-            }
+    public void ChangeLayer()
+    {
+        foreach (GameObject go in objects)
+        {
+            go.layer = LayerMask.NameToLayer(targetLayer);
         }
     }
 }
