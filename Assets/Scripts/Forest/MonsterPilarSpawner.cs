@@ -79,5 +79,8 @@ public class MonsterPilarSpawner : MonoBehaviourPunCallbacks
         Monster monster = Spawner.SpawnMonster(position + Vector3.forward);
 
         monster.GetComponent<Activator>().Activate();
+        Debug.Log(monster.GetComponent<Activator>());
+
+        Debug.Log("moster activated");
     }
 }
