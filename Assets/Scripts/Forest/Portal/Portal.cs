@@ -13,7 +13,8 @@ public class Portal : MonoBehaviour
             players.Add(player);
             if (players.Count==GameManager.playersAlive)
             {
-                PhotonNetwork.LoadLevel(0);
+                if(PhotonNetwork.IsMasterClient)
+                    PhotonNetwork.LoadLevel(0);
             }
         }
     }
