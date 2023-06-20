@@ -72,7 +72,7 @@ public class CurrentRoomMenu : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
-        PhotonNetwork.LoadLevel(3);
+        PhotonNetwork.LoadLevel(2);
     }
 
     public void OnButtonClick_Leave()

@@ -18,6 +18,7 @@ public class PhoneManager : MonoBehaviour
     [SerializeField] private int pointStartPower;
 
     public static float battery { get; private set; } = 100;
+    
     public static int networkPower { get; private set; } = 0;
 
     public UnityEvent onNetworkPowerChanged;
@@ -54,6 +55,10 @@ public class PhoneManager : MonoBehaviour
             Vector2Int index = ForestSpawner.GetIndexFromPosition(pos);
             networkPower = map[index.x, index.y];
 
+            Debug.Log(pos);
+            Debug.Log(index);
+            Debug.Log(map[index.x, index.y]);
+
             if (isDisplayActive)
             {
                 Debug.Log(isDisplayActive);
@@ -77,7 +82,6 @@ public class PhoneManager : MonoBehaviour
             Vector2Int index = ForestSpawner.GetIndexFromPosition(ForestSpawner.GetRandomPosition());
 
             Instantiate(cube, ForestSpawner.GetPositionFromIndex(index), Quaternion.identity);
-
             SetPoint(index, pointStartPower);
         }
     }

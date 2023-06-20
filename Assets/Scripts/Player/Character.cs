@@ -114,7 +114,7 @@ public class Character : MonoBehaviourPun
 
     public Vector3 GetPlayerPosition()
     {
-        return _characterAnimator.transform.position;
+        return _interact.transform.position;
     }
 }
 
