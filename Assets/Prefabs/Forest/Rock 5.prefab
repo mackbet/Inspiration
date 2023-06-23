@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2541a78a7e8b1a42a7643020cdfe54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSize: 1
-  maxSize: 1.2
+  minSize: 0.9
+  maxSize: 1
 --- !u!208 &5289720536401850555
 NavMeshObstacle:
   m_ObjectHideFlags: 0
