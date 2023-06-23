@@ -85,9 +85,24 @@ public class ForestSpawner : MonoBehaviour
                 }
             }
         }
-
-        BakeNavMesh();
     }
+
+    public void SpawnWalls()
+    {
+        for (int i = 0; i < width * scale + 1; i++)
+        {
+            for (int j = 0; j < height * scale + 1; j++)
+            {
+                if (!isValidIndex(new Vector2Int(i, j)))
+                {
+                    Vector3 newPos = GetPositionFromIndex(new Vector2Int(i, j));
+                    GameObject newGO = Instantiate(walls[RandomHelper.GetRandomInt(0, walls.Length)], newPos, Quaternion.identity, wallContainer);
+                }
+            }
+        }
+    }
+
+
     public static void MarkObjectRadius(EnvironmentObject obj, int radius)
     {
         MonsterMap[obj.indices.x, obj.indices.y] = MonsterMapCell.obstacle;
@@ -108,10 +123,6 @@ public class ForestSpawner : MonoBehaviour
         }
     }
 
-    private void BakeNavMesh()
-    {
-        surface.BuildNavMesh();
-    }
     #region Static Methods
     public EnvironmentObjectPrefab GetRandomEnvironmentObject()
     {

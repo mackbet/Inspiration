@@ -2503,9 +2503,9 @@ GameObject:
   - component: {fileID: 8307581782631181019}
   - component: {fileID: 8307581782631181020}
   - component: {fileID: 8307581782631181021}
-  - component: {fileID: 6592648000860930475}
   - component: {fileID: 2967275879434888475}
   - component: {fileID: 6841758477795102382}
+  - component: {fileID: 5130927361192925791}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2579,21 +2579,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8307581782631181022}
   m_Enabled: 1
---- !u!114 &6592648000860930475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307581782631181022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frustumSettings:
-    baseSettings: {fileID: 11400000, guid: 1ae5fe32a39a3244a8447e12cb94583c, type: 2}
-    qualitySettings: {fileID: 0}
 --- !u!114 &2967275879434888475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,6 +2608,21 @@ MonoBehaviour:
   breathingSpeed: 2
   breathingAmount: 0.07
   local: 1
+--- !u!114 &5130927361192925791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307581782631181022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frustumSettings:
+    baseSettings: {fileID: 0}
+    qualitySettings: {fileID: 0}
 --- !u!1 &8307581782941454260
 GameObject:
   m_ObjectHideFlags: 0
